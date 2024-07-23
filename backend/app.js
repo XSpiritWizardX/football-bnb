@@ -42,12 +42,11 @@ if (!isProduction) {
   );
 
 
-  // backend/app.js
+
 const routes = require('./routes');
 
-// ...
 
-app.use(routes); // Connect all the routes
+app.use(routes);
 
 
 
