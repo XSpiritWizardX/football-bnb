@@ -8,6 +8,9 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
+
+
+
 const validateSignup = [
   check('email')
     .exists({ checkFalsy: true })
@@ -28,30 +31,36 @@ const validateSignup = [
   handleValidationErrors
 ];
 
+
+
+
 // Sign up
 router.post(
     '/',
     validateSignup,
     async (req, res) => {
-      const { email, password, username, firstName, lastName } = req.body;
-      if(!password.length) throw new Error('Password must be between 4 and 60 chars.')
+      const { email, password, username } = req.body;
       const hashedPassword = bcrypt.hashSync(password);
-      const user = await User.create({ email, username, hashedPassword, firstName, lastName });
+      const user = await User.create({ email, username, hashedPassword });
 
-
-  
       const safeUser = {
         id: user.id,
         email: user.email,
         username: user.username,
       };
-  
+
       await setTokenCookie(res, safeUser);
-  
+
       return res.json({
         user: safeUser
       });
     }
   );
+
+
+
+
+
+
 
 module.exports = router;

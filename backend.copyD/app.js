@@ -8,28 +8,28 @@ const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
 
 const { environment } = require('./config');
-const router = require('./routes')
-
 const isProduction = environment === 'production';
 
 const app = express();
+
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+
 
 // Security Middleware
 if (!isProduction) {
     // enable cors only in development
     app.use(cors());
   }
-  
+
   // helmet helps set a variety of headers to better secure your app
   app.use(
     helmet.crossOriginResourcePolicy({
       policy: "cross-origin"
     })
   );
-  
+
   // Set the _csrf token and create req.csrfToken method
   app.use(
     csurf({
@@ -41,9 +41,15 @@ if (!isProduction) {
     })
   );
 
-  app.use(router)
 
-  // Catch unhandled requests and forward to error handler.
+
+const routes = require('./routes');
+
+
+app.use(routes);
+
+
+
 app.use((_req, _res, next) => {
   const err = new Error("The requested resource couldn't be found.");
   err.title = "Resource Not Found";
@@ -52,7 +58,7 @@ app.use((_req, _res, next) => {
   next(err);
 });
 
-// Process sequelize errors
+
 app.use((err, _req, _res, next) => {
   // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
@@ -66,7 +72,8 @@ app.use((err, _req, _res, next) => {
   next(err);
 });
 
-// Error formatter
+
+
 app.use((err, _req, res, _next) => {
   res.status(err.status || 500);
   console.error(err);
@@ -78,4 +85,23 @@ app.use((err, _req, res, _next) => {
   });
 });
 
-module.exports = app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports = app;
