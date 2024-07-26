@@ -15,7 +15,19 @@ module.exports = {
        name: 'Fire palace',
        description: 'stay in prince zukos room',
        price: 1000.00
-      }
+      },
+      {
+        ownerId: 4,
+        address: 'flace',
+        city: 'find',
+        state: 'firen',
+        country: 'fireNon',
+        lat: 110.0078,
+        lng: 34.0086,
+        name: 'Fire pace',
+        description: 'stay  room',
+        price: 1000.00
+       }
 
     ], { validate: true });
   },
