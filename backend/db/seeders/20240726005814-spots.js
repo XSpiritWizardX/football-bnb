@@ -1,7 +1,12 @@
 'use strict';
 const {Spot} = require("../models")
+
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
+
+
+
   async up (queryInterface, Sequelize) {
     await Spot.bulkCreate([
       {
@@ -32,6 +37,8 @@ module.exports = {
     ], { validate: true });
   },
 
+
+  
   async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
