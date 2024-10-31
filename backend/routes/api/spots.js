@@ -1,36 +1,22 @@
+// backend/routes/api/spots.js
+const express = require('express');
+const { Spot } = require('../../db/models');
+const router = express.Router();
 
 
 
 
 
 
-
-router.post(
-    '/',
-    validateSignup,
-    async (req, res) => {
-      const { email, password, username } = req.body;
-      const hashedPassword = bcrypt.hashSync(password);
-      const user = await User.create({ email, username, hashedPassword });
-
-      const safeUser = {
-        id: user.id,
-        email: user.email,
-        username: user.username,
-      };
-
-      await setTokenCookie(res, safeUser);
-
-      return res.json({
-        user: safeUser
-      });
-    }
-  );
-
-
-
-
-
-
+// GET all spots
+router.get('/', async (req, res) => {
+  try {
+    const spots = await Spot.findAll(); // Fetch all spots from the database
+    res.json(spots); // Respond with the spots as JSON
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while fetching spots' });
+  }
+});
 
 module.exports = router;

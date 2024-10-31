@@ -91,9 +91,9 @@ app.use((err, _req, res, _next) => {
 
 
 
+const spotsRoutes = require('./routes/api/spots');
 
-
-
+app.use('./routes/api', spotsRoutes);
 
 
 
