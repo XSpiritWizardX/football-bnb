@@ -1,5 +1,5 @@
 'use strict';
-
+const {Review}=require("../models");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -9,16 +9,16 @@ module.exports = {
        userId: 1,
        review: 'fireland',
        stars: 3,
-       createdAt: timestamp,
-       updatedAt:timestamp
+       createdAt:Date.now(),
+       updatedAt:Date.now()
       },
       {
         spotId: 2,
         userId: 2,
         review: 'find',
         stars: 5,
-        createdAt: timestamp,
-        updatedAt:timestamp
+        createdAt:Date.now(),
+        updatedAt:Date.now()
        }
 
     ], { validate: true });
