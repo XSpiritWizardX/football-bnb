@@ -1,5 +1,5 @@
 'use strict';
-const {Spot} = require("../models")
+const {Spots} = require("../models")
 
 
 /** @type {import('sequelize-cli').Migration} */
@@ -8,7 +8,7 @@ module.exports = {
 
 
   async up (queryInterface, Sequelize) {
-    await Spot.bulkCreate([
+    await Spots.bulkCreate([
       {
        ownerId: 1,
        address: 'firePalace',
