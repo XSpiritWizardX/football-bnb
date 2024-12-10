@@ -28,6 +28,9 @@ const validateSignup = [
   handleValidationErrors
 ];
 
+
+
+
 // Sign up
 router.post(
     '/',
@@ -39,15 +42,15 @@ router.post(
       const user = await User.create({ email, username, hashedPassword, firstName, lastName });
 
 
-  
+
       const safeUser = {
         id: user.id,
         email: user.email,
         username: user.username,
       };
-  
+
       await setTokenCookie(res, safeUser);
-  
+
       return res.json({
         user: safeUser
       });

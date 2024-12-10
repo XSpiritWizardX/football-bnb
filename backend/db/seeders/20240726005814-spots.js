@@ -5,11 +5,10 @@ let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
+
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-
-
-
   async up (queryInterface, Sequelize) {
     await Spot.bulkCreate([
       {
@@ -33,7 +32,7 @@ module.exports = {
         lat: 110.0078,
         lng: 34.0086,
         name: 'Fire pace',
-        description: 'stay  room',
+        description: 'stay room',
         price: 1000.00
        }
 
@@ -49,5 +48,11 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    options.tableName = 'Spots';
+    const Op = Sequelize.Op;
+    return queryInterface.bulkDelete(options, {
+      ownerId: { [Op.in]: [1,4] }
+    }, {});
+
   }
 };
