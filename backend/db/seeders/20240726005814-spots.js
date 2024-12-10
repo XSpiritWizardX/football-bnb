@@ -7,7 +7,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     await Spot.bulkCreate([
@@ -36,7 +35,7 @@ module.exports = {
         price: 1000.00
        }
 
-    ], { validate: true });
+    ], { validate: true, });
   },
 
 
