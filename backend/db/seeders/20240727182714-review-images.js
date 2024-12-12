@@ -45,7 +45,7 @@ module.exports = {
     options.tableName = 'ReviewImages';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      ownerId: { [Op.in]: [1,4] }
+      reviewId: { [Op.in]: [1,4] }
     }, {});
 
   }
