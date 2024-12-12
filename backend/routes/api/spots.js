@@ -28,15 +28,15 @@ router.get('/', async (req, res) => {
 
 // get current user spots
 
-// router.get('/current', async (req, res) => {
-//   try {
-//     const spots = await Spot.findAll(); // Fetch all spots from the database
-//     res.json(spots); // Respond with the spots as JSON
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'An error occurred while fetching spots' });
-//   }
-// });
+router.get('/current', async (req, res) => {
+  try {
+    const spots = await Spot.findAll(); // Fetch all spots from the database
+    res.json(spots); // Respond with the spots as JSON
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while fetching spots' });
+  }
+});
 
 
 
@@ -46,15 +46,15 @@ router.get('/', async (req, res) => {
 
 // get spot by spot id
 
-// router.get('/:spotId', async (req, res) => {
-//   try {
-//     const spots = await Spot.findAll(); // Fetch all spots from the database
-//     res.json(spots); // Respond with the spots as JSON
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'An error occurred while fetching spots' });
-//   }
-// });
+router.get('/:spotId', async (req, res) => {
+  try {
+    const spots = await Spot.findAll(); // Fetch all spots from the database
+    res.json(spots); // Respond with the spots as JSON
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while fetching spots' });
+  }
+});
 
 
 
