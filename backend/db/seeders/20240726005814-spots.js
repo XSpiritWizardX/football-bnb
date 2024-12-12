@@ -11,10 +11,10 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await Spot.bulkCreate([
       {
-       ownerId: 1,
+       ownerId: 6,
        address: 'firePalace',
        city: 'fireland',
-       state: 'fireman',
+       state: 'fire',
        country: 'fireNation',
        lat: 110.0078,
        lng: 34.0086,
@@ -24,16 +24,77 @@ module.exports = {
       },
       {
         ownerId: 4,
-        address: 'flace',
-        city: 'find',
-        state: 'firen',
-        country: 'fireNon',
+        address: 'southern air temple',
+        city: 'south air',
+        state: 'air',
+        country: 'air nation',
         lat: 110.0078,
         lng: 34.0086,
-        name: 'Fire pace',
-        description: 'stay room',
+        name: 'Southern Air Temple',
+        description: 'stay the night in aangs old room',
         price: 1000.00
-       }
+       },
+       {
+        ownerId: 6,
+        address: 'jasmine dragon',
+        city: 'ba seng sei',
+        state: 'earth',
+        country: 'earth nation',
+        lat: 110.0078,
+        lng: 34.0086,
+        name: 'Jasmine Dragon',
+        description: 'stay in the jasmine dragon and visit uncle Iroh',
+        price: 1000.00
+       },
+       {
+        ownerId: 3,
+        address: 'The Secret Tunnels',
+        city: 'Ginsen Temple',
+        state: 'earth',
+        country: 'Earth Nation',
+        lat: 110.0078,
+        lng: 34.0086,
+        name: 'Secret Tunnels',
+        description: 'Get lost and find love in the secret tunnels',
+        price: 1000.00
+       },
+       {
+        ownerId: 5,
+        address: 'Southern Water Tribe',
+        city: 'Shuen City',
+        state: 'water',
+        country: 'water nation',
+        lat: 110.0078,
+        lng: 34.0086,
+        name: 'Kataras Home',
+        description: 'Defend the southern water tribe from fire nation invaders',
+        price: 1000.00
+       },
+       {
+        ownerId: 1,
+        address: 'Kyoshi Statue',
+        city: 'Kyoshi',
+        state: 'earth',
+        country: 'earth nation',
+        lat: 110.0078,
+        lng: 34.0086,
+        name: 'Kyoshi Island',
+        description: 'stay with the kyoshi warriors',
+        price: 1000.00
+       },
+       {
+        ownerId: 2,
+        address: 'Hokage',
+        city: 'Hokage',
+        state: 'fire',
+        country: 'fire nation',
+        lat: 110.0078,
+        lng: 34.0086,
+        name: 'Master Swordsmith',
+        description: 'stay and train under a legendary master swordsman',
+        price: 1000.00
+       },
+
 
     ], { validate: true, });
   },
