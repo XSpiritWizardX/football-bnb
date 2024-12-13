@@ -30,11 +30,23 @@ router.get('/', async (req, res) => {
 
 router.get('/current', async (req, res) => {
   try {
-    const spots = await Spot.findAll();
-    res.json(spots);
+
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return res.status(401).json({ error: 'Unauthorized. Please log in.' });
+    }
+
+
+    const userSpots = await Spot.findAll({
+      where: { ownerId: userId },
+    });
+
+
+    res.json({ Spots: userSpots });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching spots' });
+    res.status(500).json({ error: 'An error occurred while fetching user spots' });
   }
 });
 
