@@ -1,6 +1,7 @@
 // backend/routes/api/spots.js
 const express = require('express');
-const { Spot, Image } = require('../../db/models');
+const { Spot, SpotImage } = require('../../db/models');
+const { Where } = require('sequelize/lib/utils');
 const router = express.Router();
 
 
@@ -8,7 +9,16 @@ const router = express.Router();
 
 
 
+
+
+
+
+
+
+
+
 // GET all spots
+// good
 
 router.get('/', async (req, res) => {
   try {
@@ -26,29 +36,48 @@ router.get('/', async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
 // get current user spots
+// good
 
 router.get('/current', async (req, res) => {
   try {
+    const currentUserId = req.user.id; // Extract user ID from authentication middleware
 
-    const userId = req.user?.id;
-
-    if (!userId) {
-      return res.status(401).json({ error: 'Unauthorized. Please log in.' });
-    }
-
-
+    // Find all spots where the current user is the owner
     const userSpots = await Spot.findAll({
-      where: { ownerId: userId },
+      where: { ownerId: currentUserId }, // Filtering spots owned by the current user
     });
 
-
-    res.json({ Spots: userSpots });
+    // Return the spots as JSON
+    return res.status(200).json({
+      Spots: userSpots,
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching user spots' });
+    console.error('Error fetching user spots:', error);
+    return res.status(500).json({ message: 'Failed to retrieve spots.' });
   }
 });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -57,25 +86,48 @@ router.get('/current', async (req, res) => {
 
 
 // get spot by spot id
-
+// works good
 router.get('/:spotId', async (req, res) => {
   try {
-    const { id } = req.params;
-    const spot = await Spot.findByPk(id);
+    const { spotId } = req.params; // Extract spotId from URL parameters
+
+    // Find the spot by its primary key (id)
+    const spot = await Spot.findByPk(spotId);
+
+    // Check if the spot exists
     if (!spot) {
-      return res.status(404).json({ error: 'Spot not found' });
+      return res.status(404).json({ message: "Spot couldn't be found" });
     }
-    res.json(spot);
+
+    // Return the spot as JSON
+    return res.status(200).json(spot);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching the spot' });
+    console.error('Error fetching spot:', error);
+    return res.status(500).json({ message: 'An error occurred while retrieving the spot.' });
   }
 });
 
 
 
-// create a new spot
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// create a new spot
+// works good
 router.post('/', async (req, res) => {
   try {
     const newSpot = await Spot.create(req.body);
@@ -97,29 +149,44 @@ router.post('/', async (req, res) => {
 
 
 
-//  add an Image to a Spot based on the Spot's id
 
+
+
+
+
+
+
+
+//  add an Image to a Spot based on the Spot's id
+// works good
 router.post('/:spotId/images', async (req, res) => {
   try {
-    const { spotId } = req.params;
-    const { url } = req.body;
+    const { spotId } = req.params; // Extract spotId from route parameters
+    const { url, preview } = req.body; // Extract url and preview from the request body
 
-
+    // Validate if the spot exists
     const spot = await Spot.findByPk(spotId);
+
     if (!spot) {
-      return res.status(404).json({ error: 'Spot not found' });
+      return res.status(404).json({ message: "Spot couldn't be found" });
     }
 
-
-    const newImage = await Image.create({
-      url,
-      spotId,
+    const newImage = await SpotImage.create({
+      spotId: spotId,
+      url: url,
+      preview: preview
     });
 
-    res.status(201).json(newImage);
+
+    return res.status(201).json({
+      id: newImage.id,
+      spotId: newImage.spotId,
+      url: newImage.url,
+      preview: newImage.preview
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while adding the image' });
+    console.error('Error adding image to spot:', error);
+    return res.status(500).json({ message: 'An error occurred while adding the image.' });
   }
 });
 
@@ -128,8 +195,16 @@ router.post('/:spotId/images', async (req, res) => {
 
 
 
-// edit a spot
 
+
+
+
+
+
+
+
+// edit a spot
+// works good
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -150,8 +225,12 @@ router.put('/:id', async (req, res) => {
 
 
 
-// delete a spot
 
+
+
+
+// delete a spot
+// works good
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
