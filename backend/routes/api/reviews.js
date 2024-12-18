@@ -19,14 +19,14 @@ const router = express.Router();
 // works good
 router.get('/current', async (req, res) => {
     try {
-      const currentUserId = req.user.id; // Extract user ID from authentication middleware
+      const currentUserId = req.user.id;
 
       // Find all spots where the current user is the owner
       const userReviews = await Review.findAll({
-        where: { userId: currentUserId }, // Filtering spots owned by the current user
+        where: { userId: currentUserId }
       });
 
-      // Return the spots as JSON
+
       return res.status(200).json({
         Reviews: userReviews,
       });

@@ -248,4 +248,73 @@ router.delete('/:id', async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ### Get all Reviews by a Spot's id
+
+// Returns all the reviews that belong to a spot specified by id.
+
+// * Require Authentication: false
+// * Request
+//   * Method: GET
+//   * Route path: /api/spots/:spotId/reviews
+//   * Body: none
+
+// * Successful Response
+//   * Status Code: 200
+//   * Headers:
+//     * Content-Type: application/json
+//   * Body:
+
+//     ```json
+//     {
+//       "Reviews": [
+//         {
+//           "id": 1,
+//           "userId": 1,
+//           "spotId": 1,
+//           "review": "This was an awesome spot!",
+//           "stars": 5,
+//           "createdAt": "2021-11-19 20:39:36",
+//           "updatedAt": "2021-11-19 20:39:36" ,
+//           "User": {
+//             "id": 1,
+//             "firstName": "John",
+//             "lastName": "Smith"
+//           },
+//           "ReviewImages": [
+//             {
+//               "id": 1,
+//               "url": "image url"
+//             }
+//           ],
+//         }
+//       ]
+//     }
+//     ```
+
+// * Error response: Couldn't find a Spot with the specified id
+//   * Status Code: 404
+//   * Headers:
+//     * Content-Type: application/json
+//   * Body:
+
+//     ```json
+//     {
+//       "message": "Spot couldn't be found"
+//     }
+//     ```
+
+
 module.exports = router;
