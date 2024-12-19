@@ -1,5 +1,5 @@
 'use strict';
-console.log("THIS IS THE BOOKINGS MIGRATION!")
+
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {

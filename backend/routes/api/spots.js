@@ -2,6 +2,7 @@
 const express = require('express');
 const { Spot, SpotImage } = require('../../db/models');
 const { Where } = require('sequelize/lib/utils');
+const { requireAuth } = require('../../utils/auth');
 const router = express.Router();
 
 
@@ -128,7 +129,7 @@ router.get('/:spotId', async (req, res) => {
 
 // create a new spot
 // works good
-router.post('/', async (req, res) => {
+router.post('/',requireAuth, async (req, res) => {
   try {
     const newSpot = await Spot.create(req.body);
     res.status(201).json(newSpot);
@@ -205,12 +206,18 @@ router.post('/:spotId/images', async (req, res) => {
 
 // edit a spot
 // works good
-router.put('/:id', async (req, res) => {
+router.put('/:id',requireAuth, async (req, res) => {
   try {
+
     const { id } = req.params;
     const spot = await Spot.findByPk(id);
     if (!spot) {
       return res.status(404).json({ error: 'Spot not found' });
+
+    }
+    // REquire authentication... require authenticate
+    if(spot.ownerId !== req.user.id) {
+      return res.status(401).json({ error: 'must be owner to edit' });
     }
     await spot.update(req.body);
     res.json(spot);
