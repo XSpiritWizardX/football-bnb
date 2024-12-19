@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
 // get current user spots
 // good
 
-router.get('/current', async (req, res) => {
+router.get('/current', requireAuth, async (req, res) => {
   try {
     const currentUserId = req.user.id; // Extract user ID from authentication middleware
 
@@ -160,7 +160,7 @@ router.post('/',requireAuth, async (req, res) => {
 
 //  add an Image to a Spot based on the Spot's id
 // works good
-router.post('/:spotId/images', async (req, res) => {
+router.post('/:spotId/images',requireAuth, async (req, res) => {
   try {
     const { spotId } = req.params; // Extract spotId from route parameters
     const { url, preview } = req.body; // Extract url and preview from the request body
@@ -177,7 +177,9 @@ router.post('/:spotId/images', async (req, res) => {
       url: url,
       preview: preview
     });
-
+    if(spot.ownerId !== req.user.id) {
+      return res.status(401).json({ error: 'must be owner to edit' });
+    }
 
     return res.status(201).json({
       id: newImage.id,
@@ -238,12 +240,15 @@ router.put('/:id',requireAuth, async (req, res) => {
 
 // delete a spot
 // works good
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const spot = await Spot.findByPk(id);
     if (!spot) {
       return res.status(404).json({ error: 'Spot not found' });
+    }
+    if(spot.ownerId !== req.user.id) {
+      return res.status(401).json({ error: 'must be owner to edit' });
     }
     await spot.destroy();
     res.json({ message: 'Spot deleted successfully' });
