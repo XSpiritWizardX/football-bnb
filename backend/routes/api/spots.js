@@ -1,6 +1,6 @@
 // backend/routes/api/spots.js
 const express = require('express');
-const { Spot, SpotImage } = require('../../db/models');
+const { Spot, SpotImage, Review, ReviewImage, User } = require('../../db/models');
 const { Where } = require('sequelize/lib/utils');
 const { requireAuth } = require('../../utils/auth');
 const router = express.Router();
@@ -273,60 +273,41 @@ router.delete('/:id',requireAuth, async (req, res) => {
 
 
 
-// ### Get all Reviews by a Spot's id
+// get all reviews based on spot id
+router.get('/:spotId/reviews', async (req, res) => {
+  try {
+    const { spotId } = req.params;
+    const spot = await Spot.findByPk(spotId);
+    if (!spot) {
+      return res.status(404).json({ message: "Spot couldn't be found" });
+    }
 
-// Returns all the reviews that belong to a spot specified by id.
 
-// * Require Authentication: false
-// * Request
-//   * Method: GET
-//   * Route path: /api/spots/:spotId/reviews
-//   * Body: none
+    const reviews = await Review.findAll({
+      where: { spotId },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'firstName', 'lastName']
+        },
+        {
+          model: ReviewImage,
+          attributes: ['id', 'url']
+        }
+      ]
+    });
 
-// * Successful Response
-//   * Status Code: 200
-//   * Headers:
-//     * Content-Type: application/json
-//   * Body:
+    return res.status(200).json({ Reviews: reviews });
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    return res.status(500).json({ message: 'An error occurred while retrieving reviews.' });
+  }
+});
 
-//     ```json
-//     {
-//       "Reviews": [
-//         {
-//           "id": 1,
-//           "userId": 1,
-//           "spotId": 1,
-//           "review": "This was an awesome spot!",
-//           "stars": 5,
-//           "createdAt": "2021-11-19 20:39:36",
-//           "updatedAt": "2021-11-19 20:39:36" ,
-//           "User": {
-//             "id": 1,
-//             "firstName": "John",
-//             "lastName": "Smith"
-//           },
-//           "ReviewImages": [
-//             {
-//               "id": 1,
-//               "url": "image url"
-//             }
-//           ],
-//         }
-//       ]
-//     }
-//     ```
 
-// * Error response: Couldn't find a Spot with the specified id
-//   * Status Code: 404
-//   * Headers:
-//     * Content-Type: application/json
-//   * Body:
 
-//     ```json
-//     {
-//       "message": "Spot couldn't be found"
-//     }
-//     ```
+
+
 
 
 module.exports = router;
