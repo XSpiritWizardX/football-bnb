@@ -23,7 +23,12 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const spots = await Spot.findAll();
+    const spots = await Spot.findAll({
+      include:{
+        model:SpotImage,
+        as:"SpotImages"
+      }
+    });
     res.json(spots);
   } catch (error) {
     console.error(error);

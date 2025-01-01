@@ -9,7 +9,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      
+           User.hasMany(
+           models.Spot,
+             { foreignKey:'ownerId', onDelete: 'Cascade', hooks: true }
+            );
+            User.hasMany(
+              models.Booking,
+                { foreignKey:'userId', onDelete: 'Cascade', hooks: true }
+               );
+               User.hasMany(
+                models.Review,
+                  { foreignKey:'userId', onDelete: 'Cascade', hooks: true }
+                 );
+
+
+
+
 
     }
   }

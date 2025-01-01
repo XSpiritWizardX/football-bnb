@@ -21,7 +21,21 @@ router.get('/current', async (req, res) => {
     try {
       const currentUserId = req.user.id;
       const userReviews = await Review.findAll({
-        where: { userId: currentUserId }
+        where: { userId: currentUserId },
+         include:[
+          {
+            model: User,
+            as:"Users"
+          },
+      {
+        model: Spot,
+        as:"Spots"
+      },
+      {
+        model: ReviewImage,
+        as:"Reviewimages"
+      }
+    ]
       });
       return res.status(200).json({
         Reviews: userReviews,

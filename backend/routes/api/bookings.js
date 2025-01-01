@@ -37,11 +37,9 @@ const router = express.Router();
 
 router.get('/current', requireAuth, async (req, res) => {
   try {
-    const currentUserId = req.user.id; // Extract user ID from authentication middleware
-
-    // Find all spots where the current user is the owner
+    const currentUserId = req.user.id;
     const userBookings = await Booking.findAll({
-      where: { ownerId: currentUserId }, // Filtering spots owned by the current user
+      where: { ownerId: currentUserId },
     });
     return res.status(200).json({
       Bookings: userBookings,
