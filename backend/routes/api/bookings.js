@@ -1,18 +1,49 @@
 // backend/routes/api/bookings.js
 const express = require('express');
 const { Booking, User, Spot } = require('../../db/models');
+// const { Where } = require('sequelize/lib/utils');
 const { requireAuth } = require('../../utils/auth');
 const moment = require('moment')
 const router = express.Router();
 
 
 
+
+
+
+// get all bookngs
+// works good
+
+// router.get('/', async (req, res) => {
+//   try {
+//     const bookings = await Booking.findAll({
+
+//     });
+//     res.json(bookings);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'An error occurred while fetching spots' });
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
+
+
 // get all current user bookings
+// works good
 router.get('/current', requireAuth, async (req, res) => {
   try {
     const currentUserId = req.user.id;
     const userBookings = await Booking.findAll({
-      where: { userId: currentUserId },
+      where: { userId: currentUserId }
     });
 
     return res.status(200).json({
@@ -136,7 +167,7 @@ router.put('/bookings/:bookingId', requireAuth, async (req, res) => {
 router.delete('/bookings/:bookingId', requireAuth, async (req, res) => {
   try {
     const { bookingId } = req.params;
-    const userId = req.user.id; 
+    const userId = req.user.id;
     const booking = await Booking.findByPk(bookingId, {
       include: [{ model: Spot }],
     });

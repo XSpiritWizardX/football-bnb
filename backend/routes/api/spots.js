@@ -1,7 +1,7 @@
 // backend/routes/api/spots.js
 const express = require('express');
 const { Spot, SpotImage, Booking, Review, ReviewImage, User } = require('../../db/models');
-const { Where } = require('sequelize/lib/utils');
+// const { Where } = require('sequelize/lib/utils');
 const { requireAuth } = require('../../utils/auth');
 const moment = require('moment');
 const router = express.Router();
@@ -462,52 +462,37 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
 
 
-// get all bookings for a spot based on spot id
-router.get('/spots/:spotId/bookings', requireAuth, async (req, res) => {
+
+
+
+
+
+// get booking based on spot id
+// works good
+router.get('/:spotId/bookings', async (req, res) => {
   try {
     const { spotId } = req.params;
-    const userId = req.user.id;
     const spot = await Spot.findByPk(spotId);
-
     if (!spot) {
       return res.status(404).json({ message: "Spot couldn't be found" });
     }
+
 
     const bookings = await Booking.findAll({
       where: { spotId },
       include: [
         {
           model: User,
-          attributes: ['id', 'firstName', 'lastName'],
+          attributes: ['id', 'firstName', 'lastName']
         },
-      ],
+
+      ]
     });
 
-    if (spot.ownerId === userId) {
-      return res.status(200).json({
-        Bookings: bookings.map((booking) => ({
-          id: booking.id,
-          spotId: booking.spotId,
-          userId: booking.userId,
-          User: booking.User,
-          startDate: booking.startDate,
-          endDate: booking.endDate,
-          createdAt: booking.createdAt,
-          updatedAt: booking.updatedAt,
-        })),
-      });
-    }
-
-    return res.status(200).json({
-      Bookings: bookings.map((booking) => ({
-        spotId: booking.spotId,
-        startDate: booking.startDate,
-        endDate: booking.endDate,
-      })),
-    });
+    return res.status(200).json({ Bookings: bookings });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'An error occurred while fetching bookings' });
+    console.error('Error fetching reviews:', error);
+    return res.status(500).json({ message: 'An error occurred while retrieving reviews.' });
   }
 });
 
@@ -521,83 +506,38 @@ router.get('/spots/:spotId/bookings', requireAuth, async (req, res) => {
 
 
 
+
+
+
+
+
+
+
 // create a new booking for a spot
-router.post('/spots/:spotId/bookings', requireAuth, async (req, res) => {
+
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
+  const { user } = req;
+  const {startDate,endDate} = req.params
   try {
+
+    
     const { spotId } = req.params;
-    const { startDate, endDate } = req.body;
-    const userId = req.user.id;
-
     const spot = await Spot.findByPk(spotId);
-
     if (!spot) {
       return res.status(404).json({ message: "Spot couldn't be found" });
     }
 
-    if (spot.ownerId === userId) {
-      return res.status(403).json({ message: "You cannot book your own spot" });
-    }
-
-    const now = moment();
-    const start = moment(startDate);
-    const end = moment(endDate);
-
-    if (start.isBefore(now, 'day')) {
-      return res.status(400).json({
-        message: "Bad Request",
-        errors: { startDate: "startDate cannot be in the past" },
-      });
-    }
-
-    if (end.isSameOrBefore(start)) {
-      return res.status(400).json({
-        message: "Bad Request",
-        errors: { endDate: "endDate cannot be on or before startDate" },
-      });
-    }
-
-    const conflictingBooking = await Booking.findOne({
-      where: {
-        spotId,
-        startDate: {
-          [Sequelize.Op.lt]: end,
-        },
-        endDate: {
-          [Sequelize.Op.gt]: start,
-        },
-      },
-    });
-
-    if (conflictingBooking) {
-      return res.status(403).json({
-        message: "Sorry, this spot is already booked for the specified dates",
-        errors: {
-          startDate: "Start date conflicts with an existing booking",
-          endDate: "End date conflicts with an existing booking",
-        },
-      });
-    }
-
     const newBooking = await Booking.create({
-      spotId,
-      userId,
-      startDate,
-      endDate,
+      userId: user.id,
+      spotId: spotId,
+      startDate: startDate,
+      endDate: endDate,
+
     });
 
-
-    return res.status(201).json({
-      id: newBooking.id,
-      spotId: newBooking.spotId,
-      userId: newBooking.userId,
-      startDate: newBooking.startDate,
-      endDate: newBooking.endDate,
-      createdAt: newBooking.createdAt,
-      updatedAt: newBooking.updatedAt,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "An error occurred while creating the booking" });
+    res.status(201).json(newBooking);
+  } catch (err) {
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 

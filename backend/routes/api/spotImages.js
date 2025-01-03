@@ -1,6 +1,6 @@
 const express = require('express');
 const { SpotImage, Spot, User } = require('../../db/models');
-const { Where } = require('sequelize/lib/utils');
+// const { Where } = require('sequelize/lib/utils');
 const { requireAuth } = require('../../utils/auth');
 const router = express.Router();
 
