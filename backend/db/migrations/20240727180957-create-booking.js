@@ -15,14 +15,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      spotid: {
+      spotId: {
         type: Sequelize.INTEGER,
         references:{
           model:"Spots",
           id:"id"
         }
       },
-      userid: {
+      userId: {
         type: Sequelize.INTEGER,
         references:{
           model:"Users",
