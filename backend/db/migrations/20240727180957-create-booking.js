@@ -45,7 +45,9 @@ module.exports = {
       }
     },options);
   },
+  
   async down(queryInterface, Sequelize) {
+    await queryinterface.removeConstraints("avatar_bnb.Bookings", "Bookings_spotid_fkey")
     await queryInterface.dropTable('Bookings');
   }
 };
