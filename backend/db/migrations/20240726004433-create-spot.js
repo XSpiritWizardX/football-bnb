@@ -61,7 +61,7 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     options.tableName = 'Spots'
-    
+    await queryinterface.removeConstraints("avatar_bnb.Bookings", "Bookings_spotid_fkey")
     await queryInterface.dropTable(options);
   }
 };
