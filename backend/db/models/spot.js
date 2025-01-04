@@ -15,15 +15,15 @@ module.exports = (sequelize, DataTypes) => {
           );
           Spot.hasMany(
             models.Review,
-              { foreignKey:'spotId', onDelete: 'Cascade', hooks: true }
+              { foreignKey:'spotId', onDelete: 'CASCADE' }
              );
              Spot.hasMany(
               models.SpotImage,
-                { foreignKey:'spotId', onDelete: 'Cascade', hooks: true }
+                { foreignKey:'spotId', onDelete: 'CASCADE' }
                );
                Spot.hasMany(
                 models.Booking,
-                  { foreignKey:'spotId', onDelete: 'Cascade', hooks: true }
+                  { foreignKey:'spotId', onDelete: 'CASCADE' }
                  );
 
 

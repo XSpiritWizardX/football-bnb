@@ -19,7 +19,8 @@ module.exports = {
           model:"Spots",
           id:"id"
         },
-        onDelete: 'CASCADE'
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       url: {
         type: Sequelize.STRING

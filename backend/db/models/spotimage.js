@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       SpotImage.belongsTo(
         models.Spot,
-          { foreignKey: 'spotId', onDelete: "Cascade", hooks: true }
+          { foreignKey: 'spotId', onDelete: "Cascade"}
       );
 
     }
