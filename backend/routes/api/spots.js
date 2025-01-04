@@ -92,7 +92,7 @@ const validateQueryParams = (queryParams) => {
 
 
 
-
+// need help with average star reviews
 
 
 // helper function to calculate avg star review
