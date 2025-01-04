@@ -62,9 +62,9 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     options.tableName = 'Spots'
-    // await queryInterface.removeConstraint("avatar_bnb.Bookings", "Bookings_spotid_fkey")
-    // await queryInterface.removeConstraint("avatar_bnb.Reviews", "Reviews_spotid_fkey")
-    // await queryInterface.removeConstraint("avatar_bnb.SpotImages", "SpotImages_spotid_fkey")
+    // await queryInterface.removeConstraint("avatar_bnb.Bookings", "Bookings_spotId_fkey")
+    await queryInterface.removeConstraint("avatar_bnb.Reviews", "Reviews_spotId_fkey")
+    // await queryInterface.removeConstraint("avatar_bnb.SpotImages", "SpotImages_spotId_fkey")
     // await queryInterface.dropTable('Bookings');
     // await queryInterface.dropTable('Reviews');
     // await queryInterface.dropTable('SpotImages');
