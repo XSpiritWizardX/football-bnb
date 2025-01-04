@@ -49,7 +49,7 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     options.tableName = 'Users'
-        await queryInterface.removeConstraint("avatar_bnb.Bookings", "Bookings_userid_fkey")
+        await queryInterface.removeConstraint("avatar_bnb.Reviews", "Reviews_userId_fkey")
 
     await queryInterface.dropTable(options);
   }
