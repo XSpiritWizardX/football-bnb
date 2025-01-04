@@ -64,7 +64,7 @@ module.exports = {
     options.tableName = 'Spots'
     // await queryInterface.removeConstraint("avatar_bnb.Bookings", "Bookings_spotId_fkey")
     // await queryInterface.removeConstraint("avatar_bnb.Reviews", "Reviews_spotId_fkey")
-    await queryInterface.removeConstraint("avatar_bnb.SpotImages", "SpotImages_spotId_fkey")
+    // await queryInterface.removeConstraint("avatar_bnb.SpotImages", "SpotImages_spotId_fkey")
     // await queryInterface.dropTable('Bookings');
     // await queryInterface.dropTable('Reviews');
     // await queryInterface.dropTable('SpotImages');
