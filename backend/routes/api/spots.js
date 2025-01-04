@@ -118,6 +118,22 @@ const validateQueryParams = (queryParams) => {
 
 
 
+// helper function to calculate number of reviews
+
+// function numReviews () {
+//   return spotReviews.length -1;
+// }
+
+
+
+
+
+
+
+
+
+
+
 
 // get all spots with query filters
 // works good
