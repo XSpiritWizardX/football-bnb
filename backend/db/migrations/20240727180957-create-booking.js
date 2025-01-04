@@ -36,10 +36,12 @@ module.exports = {
         onUpdate: 'CASCADE',
       },
       startDate: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       endDate: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
