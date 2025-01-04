@@ -45,6 +45,17 @@ const router = express.Router();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 // Helper function for validating query parameters
 const validateQueryParams = (queryParams) => {
   const errors = {};
@@ -77,6 +88,26 @@ const validateQueryParams = (queryParams) => {
 
   return errors;
 };
+
+
+
+
+
+
+
+// helper function to calculate avg star review
+
+// function avgStarRating (Reviews) {
+//   const starry = Reviews;
+//   let avgStars;
+//   let stars = 0;
+
+//     for (let i = 0; i < starry.length; i++) {
+//       stars += starry[i];
+//     }
+//     avgStars = stars/starry.length;
+//     return Math.round(avgStars*10)/10
+// };
 
 
 
@@ -252,6 +283,7 @@ router.post('/:spotId/images',requireAuth, async (req, res) => {
 
 
     const spot = await Spot.findByPk(spotId);
+
 
     if (!spot) {
       return res.status(404).json({ message: "Spot couldn't be found" });
@@ -520,7 +552,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   const {startDate,endDate} = req.params
   try {
 
-    
+
     const { spotId } = req.params;
     const spot = await Spot.findByPk(spotId);
     if (!spot) {

@@ -25,6 +25,32 @@ router.use('/reviewImages', reviewImagesRouter);
 
 
 
+
+
+
+
+
+
+
+// helper function to calculate avg star review
+
+// function avgStarRating () {
+//     const starry = Review.stars;
+//     let avgStars;
+//     let stars = 0;
+
+//       for (let i = 0; i < starry.length; i++) {
+//         stars += starry[i];
+//         return stars;
+//       }
+//       avgStars = stars/starry.length;
+//   return avgStars;
+//   };
+
+
+//   console.log(avgStarRating([2,5,1,4,3]))
+  // 3
+
 // router.get(
 //   '/require-auth',
 //   requireAuth,
