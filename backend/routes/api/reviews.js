@@ -239,6 +239,9 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
         message: 'Not authorized to delete this review'
       });
     }
+
+    
+
     await review.destroy();
 
     return res.status(200).json({
