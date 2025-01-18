@@ -263,7 +263,8 @@ router.get('/:spotId', async (req, res) => {
 // works good
 router.post('/',requireAuth, async (req, res) => {
   try {
-    const newSpot = await Spot.create(req.body);
+
+    const newSpot = await Spot.create({ownerId:req.user.id, ...req.body});
     res.status(201).json(newSpot);
   } catch (error) {
     console.error(error);
