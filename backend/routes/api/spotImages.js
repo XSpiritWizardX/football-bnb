@@ -18,7 +18,7 @@ const router = express.Router();
 router.delete('/spot-images/:imageId', requireAuth, async (req, res) => {
   try {
 
-    const { imageId } = req.params;
+    const { imageId } = req.body.params;
     const userId = req.user.id;
     const spotImage = await SpotImage.findByPk(imageId, {
       include: {

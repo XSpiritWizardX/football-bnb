@@ -65,7 +65,7 @@ router.get('/current', requireAuth, async (req, res) => {
 
 
 
-// update an existing booking
+// update a booking
 router.put('/bookings/:bookingId', requireAuth, async (req, res) => {
   try {
     const { bookingId } = req.params;
@@ -163,11 +163,13 @@ router.put('/bookings/:bookingId', requireAuth, async (req, res) => {
 
 
 
-// Route to delete an existing booking
+//  delete a booking
 router.delete('/bookings/:bookingId', requireAuth, async (req, res) => {
   try {
     const { bookingId } = req.params;
     const userId = req.user.id;
+
+
     const booking = await Booking.findByPk(bookingId, {
       include: [{ model: Spot }],
     });
@@ -186,7 +188,12 @@ router.delete('/bookings/:bookingId', requireAuth, async (req, res) => {
         message: "Bookings that have been started can't be deleted",
       });
     }
+
+
+
     await booking.destroy();
+
+
 
     return res.status(200).json({ message: "Successfully deleted" });
   } catch (error) {

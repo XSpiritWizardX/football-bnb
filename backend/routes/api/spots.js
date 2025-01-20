@@ -265,6 +265,44 @@ router.post('/',requireAuth, async (req, res) => {
   try {
 
     const newSpot = await Spot.create({ownerId:req.user.id, ...req.body});
+
+
+
+
+    // create spot validations
+
+    if(!req.body.address){
+      res.status(400).json({message: "Street address is required " })
+    }
+
+    if(!req.body.city){
+      res.status(400).json({message: "City is required " })
+    }
+    if(!req.body.state){
+      res.status(400).json({message: "State is required " })
+    }
+    if(!req.body.country){
+      res.status(400).json({message: "Country is required " })
+    }
+    if(!req.body.lat){
+      res.status(400).json({message: "latitude is required " })
+    }
+    if(!req.body.lng){
+      res.status(400).json({message: "longitude is required " })
+    }
+    if(!req.body.name){
+      res.status(400).json({message: "name is required " })
+    }
+    if(!req.body.description){
+      res.status(400).json({message: "description is required " })
+    }
+    if(!req.body.price){
+      res.status(400).json({message: "Price is required " })
+    }
+
+
+
+
     res.status(201).json(newSpot);
   } catch (error) {
     console.error(error);
@@ -317,7 +355,7 @@ router.post('/:spotId/images',requireAuth, async (req, res) => {
 
     return res.status(201).json({
       id: newImage.id,
-      spotId: newImage.spotId,
+      // spotId: newImage.spotId,
       url: newImage.url,
       preview: newImage.preview
     });
@@ -355,7 +393,51 @@ router.put('/:id',requireAuth, async (req, res) => {
     if(spot.ownerId !== req.user.id) {
       return res.status(401).json({ error: 'must be owner to edit' });
     }
+
+
+
+
+
+
+
     await spot.update(req.body);
+
+
+
+
+
+    if(!req.body.address){
+      res.status(400).json({message: "Street address is required " })
+    }
+
+    if(!req.body.city){
+      res.status(400).json({message: "City is required " })
+    }
+    if(!req.body.state){
+      res.status(400).json({message: "State is required " })
+    }
+    if(!req.body.country){
+      res.status(400).json({message: "Country is required " })
+    }
+    if(!req.body.lat){
+      res.status(400).json({message: "latitude is required " })
+    }
+    if(!req.body.lng){
+      res.status(400).json({message: "longitude is required " })
+    }
+    if(!req.body.name){
+      res.status(400).json({message: "name is required " })
+    }
+    if(!req.body.description){
+      res.status(400).json({message: "description is required " })
+    }
+    if(!req.body.price){
+      res.status(400).json({message: "Price is required " })
+    }
+
+
+
+
     res.json(spot);
   } catch (error) {
     console.error(error);
@@ -583,6 +665,24 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
       endDate: endDate,
 
     });
+
+
+
+
+    // validations for dates
+    if(!req.body.startDate){
+      res.status(400).json({message:"startDate is required"})
+    }
+
+
+    if(!req.body.endDate){
+      res.status(400).json({message:"endDate is required"})
+    }
+
+
+
+
+
 
     res.status(201).json(newBooking);
   } catch (err) {
