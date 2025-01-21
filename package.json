@@ -1,8 +1,8 @@
 {
 
-  "name": "avatarbnb",
+  "name": "football-bnb",
   "version": "1.0.0",
-  "description": "avatar air bnb project",
+  "description": "football air bnb project",
   "main": "index.js",
   "scripts": {
     "install": "npm --prefix backend install backend",

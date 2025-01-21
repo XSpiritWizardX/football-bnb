@@ -19,39 +19,46 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user1@user.io',
-        username: 'swordGuy2000',
-        firstName: 'Sokka',
-        lastName: 'Sokka',
+        email: 'lionsqb@lions.io',
+        username: 'qb-lions',
+        firstName: 'Jared',
+        lastName: 'Goff',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
         email: 'user2@user.io',
-        username: 'metal-muscles',
-        firstName: 'Toph',
-        lastName: 'Beifong',
+        username: 'coachoftheyear',
+        firstName: 'Dan',
+        lastName: 'Campbell',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
         email: 'user3@user.io',
-        username: 'The-last-airbender',
-        firstName: 'Aang',
-        lastName: 'Aang',
+        username: 'sunGoD',
+        firstName: 'Amon Ra',
+        lastName: 'St Brown',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
         email: 'user4@user.io',
-        username: 'BloodBender',
-        firstName: 'Katara',
-        lastName: 'Katara',
+        username: 'the ladies man',
+        firstName: 'Jake',
+        lastName: 'Bates',
         hashedPassword: bcrypt.hashSync('password2')
       },
       {
         email: 'user5@user.io',
-        username: 'PrinceofFire',
-        firstName: 'Zuko',
-        lastName: 'Zuko',
+        username: 'Knuckles',
+        firstName: 'David',
+        lastName: 'Montgomery',
         hashedPassword: bcrypt.hashSync('password3')
+      },
+      {
+        email: 'user6@user.io',
+        username: 'Sonic',
+        firstName: 'Jamyr',
+        lastName: 'Gibbs',
+        hashedPassword: bcrypt.hashSync('password2')
       }
     ], { validate: true });
   },
