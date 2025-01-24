@@ -106,76 +106,71 @@ module.exports = {
         url:"https://www.musco.com/wp-content/uploads/2019/03/superdome-1024x512.jpg",
         preview:true
        },
-      //  {
-      //   spotId: 19,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 20,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 21,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 22,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 23,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 24,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 25,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 26,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 27,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 28,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 29,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 30,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 31,
-      //   url:"",
-      //   preview:true
-      //  },
-      //  {
-      //   spotId: 32,
-      //   url:"",
-      //   preview:true
-      //  },
+       {
+        spotId: 19,
+        url:"https://dims.apnews.com/dims4/default/1464b50/2147483647/strip/false/crop/5472x3648+0+0/resize/1486x991!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F87%2F87%2F4a159a1925b8bf8a7385b7fa19af%2Fe3c3710511e643edb8eacb552f1b9512",
+        preview:true
+       },
+       {
+        spotId: 20,
+        url:"https://tsutigers.com/images/2023/3/1/623b7932a187c.image.jpg",
+        preview:true
+       },
+       {
+        spotId: 21,
+        url:"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c4/f9/24/view.jpg?w=900&h=500&s=1",
+        preview:true
+       },
+       {
+        spotId: 22,
+        url:"https://www.arup.com/globalassets/images/projects/a/allegiant-stadium/allegiant-stadium-hero.jpg",
+        preview:true
+       },
+       {
+        spotId: 23,
+        url:"https://cdn.vox-cdn.com/thumbor/cewvl7w0-8FqEQLQEbNrS7gJm8M=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/23932071/1288669970.jpg",
+        preview:true
+       },
+       {
+        spotId: 24,
+        url:"https://www.stadiumsofprofootball.com/wp-content/uploads/2016/07/ray23950.jpg",
+        preview:true
+       },
+       {
+        spotId: 25,
+        url:"https://a.espncdn.com/photo/2008/0730/soldier_580.jpg",
+        preview:true
+       },
+       {
+        spotId: 26,
+        url:"https://cdn.vox-cdn.com/thumbor/MYF9uewZybI_1DMxIMssZr4Li8Y=/0x0:4032x3024/1200x0/filters:focal(0x0:4032x3024):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9099429/IMG_3848.JPG",
+        preview:true
+       },
+       {
+        spotId: 27,
+        url:"https://www.sportsbusinessjournal.com/-/media/Images/Daily/2023/06/07/Olivia-DAILY-June-7/Jaguars-reno/Jaguars-stadium-renderings-3.ashx",
+        preview:true
+       },
+       {
+        spotId: 28,
+        url:"https://www.sierraclub.org/sites/default/files/styles/amp_1200x900_4_3/public/sierra/articles/big/Fans%20attending%20an%20Arizona%20Cardinals%20game%20played%20under%20Ephesus%20LED%20Lighting.jpg.webp?itok=rOa5DVJE",
+        preview:true
+       },
+       {
+        spotId: 29,
+        url:"https://www.usbankstadium.com/assets/img/Untitled-design-51-bd77e4a23a.png",
+        preview:true
+       },
+       {
+        spotId: 30,
+        url:"https://static.clubs.nfl.com/image/upload/t_new_photo_album/bills/ns4swz69l4fa2ab4bb7l.jpg",
+        preview:true
+       },
+       {
+        spotId: 31,
+        url:"https://media.licdn.com/dms/image/v2/C4E1BAQFq73NoMVNlkQ/company-background_10000/company-background_10000/0/1584452890553/mercedes_benz_stadium_cover?e=2147483647&v=beta&t=2skKOlVLDzmLjGdSwH5WcZTfjeZOelQ8b_V-_qxYSzQ",
+        preview:true
+       },
 
 
 
