@@ -69,7 +69,7 @@ module.exports = {
         country: 'United States',
         lat: 47.595152,
         lng: -122.331639,
-        name: 'Centruy Link Field',
+        name: 'Century Link Field',
         description: 'Home to the Seattle Seahawks',
         price: 1000.00
        },
@@ -105,7 +105,7 @@ module.exports = {
         country: 'United States',
         lat: 42.340115,
         lng: -83.046341,
-        name: 'First Energy Stadium',
+        name: 'Ford Field',
         description: 'Home to the Detroit Lions',
         price: 1000.00
        },
