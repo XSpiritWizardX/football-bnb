@@ -281,15 +281,18 @@ router.post('/',requireAuth, async (req, res) => {
     if(!req.body.state){
       res.status(400).json({message: "State is required " })
     }
+    if(!req.body.zipcode){
+      res.status(400).json({message: "Zipcode is required " })
+    }
     if(!req.body.country){
       res.status(400).json({message: "Country is required " })
     }
-    if(!req.body.lat){
-      res.status(400).json({message: "latitude is required " })
-    }
-    if(!req.body.lng){
-      res.status(400).json({message: "longitude is required " })
-    }
+    // if(!req.body.lat){
+    //   res.status(400).json({message: "latitude is required " })
+    // }
+    // if(!req.body.lng){
+    //   res.status(400).json({message: "longitude is required " })
+    // }
     if(!req.body.name){
       res.status(400).json({message: "name is required " })
     }
@@ -416,15 +419,18 @@ router.put('/:id',requireAuth, async (req, res) => {
     if(!req.body.state){
       res.status(400).json({message: "State is required " })
     }
+    if(!req.body.zipcode){
+      res.status(400).json({message: "Zipcode is required " })
+    }
     if(!req.body.country){
       res.status(400).json({message: "Country is required " })
     }
-    if(!req.body.lat){
-      res.status(400).json({message: "latitude is required " })
-    }
-    if(!req.body.lng){
-      res.status(400).json({message: "longitude is required " })
-    }
+    // if(!req.body.lat){
+    //   res.status(400).json({message: "latitude is required " })
+    // }
+    // if(!req.body.lng){
+    //   res.status(400).json({message: "longitude is required " })
+    // }
     if(!req.body.name){
       res.status(400).json({message: "name is required " })
     }
