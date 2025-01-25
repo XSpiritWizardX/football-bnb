@@ -281,25 +281,25 @@ router.post('/',requireAuth, async (req, res) => {
     if(!req.body.state){
       res.status(400).json({message: "State is required " })
     }
-    if(!req.body.zipcode){
+    if(!req.body.zipcode || req.body.zipcode.length !== 5 ){
       res.status(400).json({message: "Zipcode is required " })
     }
     if(!req.body.country){
       res.status(400).json({message: "Country is required " })
     }
-    // if(!req.body.lat){
-    //   res.status(400).json({message: "latitude is required " })
-    // }
-    // if(!req.body.lng){
-    //   res.status(400).json({message: "longitude is required " })
-    // }
+    if(!req.body.lat){
+      res.status(400).json({message: "latitude is required " })
+    }
+    if(!req.body.lng){
+      res.status(400).json({message: "longitude is required " })
+    }
     if(!req.body.name){
       res.status(400).json({message: "name is required " })
     }
     if(!req.body.description){
       res.status(400).json({message: "description is required " })
     }
-    if(!req.body.price){
+    if(!req.body.price || req.body.price < 0){
       res.status(400).json({message: "Price is required " })
     }
 
@@ -425,12 +425,12 @@ router.put('/:id',requireAuth, async (req, res) => {
     if(!req.body.country){
       res.status(400).json({message: "Country is required " })
     }
-    // if(!req.body.lat){
-    //   res.status(400).json({message: "latitude is required " })
-    // }
-    // if(!req.body.lng){
-    //   res.status(400).json({message: "longitude is required " })
-    // }
+    if(!req.body.lat){
+      res.status(400).json({message: "latitude is required " })
+    }
+    if(!req.body.lng){
+      res.status(400).json({message: "longitude is required " })
+    }
     if(!req.body.name){
       res.status(400).json({message: "name is required " })
     }
