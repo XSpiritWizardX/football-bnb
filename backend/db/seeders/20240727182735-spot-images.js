@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        url:"https://visit-dallas-proxy.imgix.net/https%3A%2F%2Fassets.simpleviewinc.com%2Fsimpleview%2Fimage%2Fupload%2Fc_fit%2Cw_800%2Ch_600%2Fcrm%2Fdallas%2FATTStadium-Dallas-MeetingPlannersImg0-9bff72b25056b3a_9bff73fb-5056-b3a8-491379cce29657b5.png?auto=compress%2Cformat&fit=max&position=50%2050&q=80&w=1024&s=fe67ea0ed20e587b3850b992d6c9ba9a",
+        url:"https://www.knoxtntoday.com/wp-content/uploads/2024/11/6-view-of-field-from-end-zone-4.jpg",
         preview:true
       },
        {
