@@ -35,8 +35,26 @@ module.exports = {
         endDate: "02/23/2025"
       },
       {
-        spotId: 6,
-        userId: 5,
+        spotId: 11,
+        userId: 1,
+        startDate: "12/12/2025",
+        endDate: "12/15/2025"
+      },
+      {
+        spotId: 8,
+        userId: 1,
+        startDate: "12/12/2025",
+        endDate: "12/15/2025"
+      },
+      {
+        spotId: 9,
+        userId: 1,
+        startDate: "12/12/2025",
+        endDate: "12/15/2025"
+      },
+      {
+        spotId: 22,
+        userId: 1,
         startDate: "12/12/2025",
         endDate: "12/15/2025"
       },

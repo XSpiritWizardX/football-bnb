@@ -43,6 +43,70 @@ module.exports = {
           createdAt:Date.now(),
           updatedAt:Date.now()
          },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 3,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 2,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 2,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 5,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 1,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 3,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 2,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
+         {
+          spotId: 1,
+          userId: 3,
+          review: 'its not too bad if you arnt a prisoner',
+          stars: 4,
+          createdAt:Date.now(),
+          updatedAt:Date.now()
+         },
 
 
     ], { validate: true, });

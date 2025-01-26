@@ -1,4 +1,8 @@
 // backend/routes/api/spots.js
+
+
+
+
 const express = require('express');
 const { Spot, SpotImage, Booking, Review, ReviewImage, User } = require('../../db/models');
 // const { Where } = require('sequelize/lib/utils');
@@ -92,73 +96,49 @@ const validateQueryParams = (queryParams) => {
 
 
 
-// need help with average star reviews
-
-
-// helper function to calculate avg star review
-
-// function avgStarRating (Reviews) {
-//   const starry = Reviews;
-//   let avgStars;
-//   let stars = 0;
-
-//     for (let i = 0; i < starry.length; i++) {
-//       stars += starry[i];
-//     }
-//     avgStars = stars/starry.length;
-//     return Math.round(avgStars*10)/10
-// };
+  // get all spots with query filters
+  // works good
+  router.get('/', async (req, res) => {
+    try {
 
 
 
+      const { page = 1, size = 20, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+      const validationErrors = validateQueryParams(req.query);
+      if (Object.keys(validationErrors).length > 0) {
+        return res.status(400).json({ message: 'Bad Request', errors: validationErrors });
+      }
 
+      const offset = (page - 1) * size;
+      const limit = size;
+      const filterConditions = {};
 
+      if (minLat && maxLat) filterConditions.lat = { [Sequelize.Op.between]: [minLat, maxLat] };
+      if (minLng && maxLng) filterConditions.lng = { [Sequelize.Op.between]: [minLng, maxLng] };
+      if (minPrice) filterConditions.price = { [Sequelize.Op.gte]: minPrice };
+      if (maxPrice) filterConditions.price = { ...filterConditions.price, [Sequelize.Op.lte]: maxPrice };
 
+      const { rows: spots, count } = await Spot.findAndCountAll({
+        where: filterConditions,
+        limit,
+        offset,
+      include : [
+        {model: Review}
 
-
-
-
-// helper function to calculate number of reviews
-
-// function numReviews () {
-//   return spotReviews.length -1;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-// get all spots with query filters
-// works good
-router.get('/', async (req, res) => {
-  try {
-    const { page = 1, size = 20, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
-    const validationErrors = validateQueryParams(req.query);
-    if (Object.keys(validationErrors).length > 0) {
-      return res.status(400).json({ message: 'Bad Request', errors: validationErrors });
-    }
-
-    const offset = (page - 1) * size;
-    const limit = size;
-    const filterConditions = {};
-
-    if (minLat && maxLat) filterConditions.lat = { [Sequelize.Op.between]: [minLat, maxLat] };
-    if (minLng && maxLng) filterConditions.lng = { [Sequelize.Op.between]: [minLng, maxLng] };
-    if (minPrice) filterConditions.price = { [Sequelize.Op.gte]: minPrice };
-    if (maxPrice) filterConditions.price = { ...filterConditions.price, [Sequelize.Op.lte]: maxPrice };
-
-    const { rows: spots, count } = await Spot.findAndCountAll({
-      where: filterConditions,
-      limit,
-      offset
+      ]
     });
+
+    // console.log(spots[0].dataValues.Reviews)
+
+
+    spots.map(spot => {
+      const totalStars = spot.dataValues.Reviews.reduce((acc,review) => {
+        return acc += review.dataValues.stars
+      },0)
+      spot.dataValues.avgRating = Math.round(totalStars/spot.dataValues.Reviews.length *10)/10;
+      delete spot.dataValues.Reviews
+    })
+
 
 
     res.status(200).json({
@@ -178,12 +158,6 @@ router.get('/', async (req, res) => {
 
 
 
-
-
-
-
-
-
 // get current user spots
 // works good
 
@@ -194,7 +168,23 @@ router.get('/current', requireAuth, async (req, res) => {
 
     const userSpots = await Spot.findAll({
       where: { ownerId: currentUserId },
+      include : [
+        {model: Review}
+
+      ]
     });
+
+
+
+    userSpots.map(spot => {
+      const totalStars = spot.dataValues.Reviews.reduce((acc,review) => {
+        return acc += review.dataValues.stars
+      },0)
+      spot.dataValues.avgRating = Math.round(totalStars/spot.dataValues.Reviews.length *10)/10;
+      delete spot.dataValues.Reviews
+    })
+
+
 
     return res.status(200).json({
       Spots: userSpots,
@@ -227,11 +217,34 @@ router.get('/current', requireAuth, async (req, res) => {
 router.get('/:spotId', async (req, res) => {
   try {
     const { spotId } = req.params;
-    const spot = await Spot.findByPk(spotId);
+    const spot = await Spot.findOne({
+      where: { id: spotId },
+      include : [
+        {model: Review,
+
+        },
+        {
+          model: SpotImage
+        },
+        {
+          model: User
+        },
+
+      ]
+    });
 
     if (!spot) {
       return res.status(404).json({ message: "Spot couldn't be found" });
     }
+
+    const totalStars = spot.dataValues.Reviews.reduce((acc,review) => {
+        return acc += review.dataValues.stars
+      },0)
+      spot.dataValues.avgRating = Math.round(totalStars/spot.dataValues.Reviews.length *10)/10;
+      delete spot.dataValues.Reviews
+
+
+
 
     return res.status(200).json(spot);
   } catch (error) {
@@ -606,16 +619,30 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
 // get booking based on spot id
 // works good
-router.get('/:spotId/bookings', async (req, res) => {
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
   try {
     const { spotId } = req.params;
     const spot = await Spot.findByPk(spotId);
+    const currentUserId = req.user.id;
+
+
     if (!spot) {
       return res.status(404).json({ message: "Spot couldn't be found" });
     }
 
 
+
+
     const bookings = await Booking.findAll({
+      where: { spotId },
+      attributes: ["spotId", "startDate", "endDate"]
+
+    });
+
+
+
+
+    const userBookings = await Booking.findAll({
       where: { spotId },
       include: [
         {
@@ -626,7 +653,18 @@ router.get('/:spotId/bookings', async (req, res) => {
       ]
     });
 
-    return res.status(200).json({ Bookings: bookings });
+
+    if( currentUserId !== spot.ownerId) {
+      return res.status(200).json({ Bookings: bookings });
+
+    } else {
+
+      return res.status(200).json({ Bookings: userBookings });
+    }
+
+
+
+
   } catch (error) {
     console.error('Error fetching reviews:', error);
     return res.status(500).json({ message: 'An error occurred while retrieving reviews.' });

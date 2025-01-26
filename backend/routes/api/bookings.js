@@ -3,7 +3,8 @@ const express = require('express');
 const { Booking, User, Spot } = require('../../db/models');
 // const { Where } = require('sequelize/lib/utils');
 const { requireAuth } = require('../../utils/auth');
-const moment = require('moment')
+const moment = require('moment');
+const { where } = require('sequelize');
 const router = express.Router();
 
 
@@ -14,10 +15,16 @@ const router = express.Router();
 // get all bookngs
 // works good
 
-// router.get('/', async (req, res) => {
+// router.get('/', requireAuth, async (req, res) => {
 //   try {
+//
 //     const bookings = await Booking.findAll({
-
+//       
+//       include: [
+//         {
+//           model: Spot
+//         }
+//       ]
 //     });
 //     res.json(bookings);
 //   } catch (error) {
@@ -43,7 +50,12 @@ router.get('/current', requireAuth, async (req, res) => {
   try {
     const currentUserId = req.user.id;
     const userBookings = await Booking.findAll({
-      where: { userId: currentUserId }
+      where: { userId: currentUserId },
+      include: [
+        {
+          model: Spot
+        }
+      ]
     });
 
     return res.status(200).json({
