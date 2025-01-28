@@ -1,13 +1,57 @@
+
+// // // ...
+
+// // const Football = () => {
+//     //   return (
+//         //     <div style={{ color: "brown", fontSize: "100px" }}>
+//         //      <GiAmericanFootballBall />
+//         //     </div>
+//         //   );
+//         // };
+
+//         // export default Football
+
+
+
+
+
+//         // frontend/src/components/Navigation/ProfileButton.jsx
+//         import { GiAmericanFootballBall } from "react-icons/gi";
+
+
+
+
+
+
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { FaUserCircle } from 'react-icons/fa';
 import { GiAmericanFootballBall } from "react-icons/gi";
+import * as sessionActions from '../../store/session';
 
-// ...
+function ProfileButton({ user }) {
+  const dispatch = useDispatch();
 
-const Football = () => {
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+  };
+
   return (
-    <div style={{ color: "brown", fontSize: "100px" }}>
-     <GiAmericanFootballBall />
-    </div>
+    <>
+      <button>
+      <GiAmericanFootballBall />
+      </button>
+      <ul className="profile-dropdown">
+        <li>{user.username}</li>
+        <li>{user.firstName} {user.lastName}</li>
+        <li>{user.email}</li>
+        <li>
+          <button onClick={logout}>Log Out</button>
+        </li>
+      </ul>
+    </>
   );
-};
+}
 
-export default Football
+export default ProfileButton;
