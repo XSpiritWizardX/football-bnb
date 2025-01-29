@@ -1,1 +1,5 @@
 /* TODO: Add sitewide styles */
+h1 {
+    display: flex;
+    justify-self: center;
+}
