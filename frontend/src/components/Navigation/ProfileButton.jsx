@@ -1,48 +1,53 @@
 
-// // // ...
+  // frontend/src/components/Navigation/ProfileButton.jsx
 
-// // const Football = () => {
-//     //   return (
-//         //     <div style={{ color: "brown", fontSize: "100px" }}>
-//         //      <GiAmericanFootballBall />
-//         //     </div>
-//         //   );
-//         // };
+  import { useState, useEffect, useRef } from 'react';
+  import { useDispatch } from 'react-redux';
 
-//         // export default Football
+  import { GiAmericanFootballBall } from "react-icons/gi";
 
+  import * as sessionActions from '../../store/session';
 
+  import './ProfileButton.css'
 
+  function ProfileButton({ user }) {
+    const dispatch = useDispatch();
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
 
+    const toggleMenu = (e) => {
+      e.stopPropagation(); // Keep click from bubbling up to document and triggering closeMenu
+      // if (!showMenu) setShowMenu(true);
+      setShowMenu(!showMenu);
+    };
 
-//         // frontend/src/components/Navigation/ProfileButton.jsx
-//         import { GiAmericanFootballBall } from "react-icons/gi";
+    useEffect(() => {
+      if (!showMenu) return;
 
+      const closeMenu = (e) => {
+        if (ulRef.current && !ulRef.current.contains(e.target)) {
+          setShowMenu(false);
+        }
+      };
 
+    document.addEventListener('click', closeMenu);
 
-
-
-
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { FaUserCircle } from 'react-icons/fa';
-import { GiAmericanFootballBall } from "react-icons/gi";
-import * as sessionActions from '../../store/session';
-
-function ProfileButton({ user }) {
-  const dispatch = useDispatch();
+    return () => document.removeEventListener('click', closeMenu);
+  }, [showMenu]);
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
 
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
   return (
     <>
-      <button>
-      <GiAmericanFootballBall />
+      <button onClick={toggleMenu}>
+     <GiAmericanFootballBall />
       </button>
-      <ul className="profile-dropdown">
+      <ul className={ulClassName} ref={ulRef}>
         <li>{user.username}</li>
         <li>{user.firstName} {user.lastName}</li>
         <li>{user.email}</li>
