@@ -19,7 +19,7 @@ const router = express.Router();
 //   try {
 //
 //     const bookings = await Booking.findAll({
-//       
+//
 //       include: [
 //         {
 //           model: Spot

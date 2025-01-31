@@ -692,7 +692,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
 router.post('/:spotId/bookings', requireAuth, async (req, res) => {
   const { user } = req;
-  const {startDate,endDate} = req.params
+  const {startDate,endDate} = req.body
   try {
 
 
@@ -715,12 +715,12 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
     // validations for dates
     if(!req.body.startDate){
-      res.status(400).json({message:"startDate is required"})
+      return res.status(400).json({message:"startDate is required"})
     }
 
 
     if(!req.body.endDate){
-      res.status(400).json({message:"endDate is required"})
+      return res.status(400).json({message:"endDate is required"})
     }
 
 

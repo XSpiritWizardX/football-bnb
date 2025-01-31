@@ -19,7 +19,6 @@
 
 
 .menu-button {
-    position: fixed;
     top: 20px;
     right: 20px;
     background-color: #af784c;
@@ -59,13 +58,8 @@
 .auth-container {
     display: flex;
     flex-direction: column;
-    /* position: absolute; */
     top: 80px;
     right: 20px;
-    /* align-items: flex-end;
-    justify-content: flex-start; */
-    /* height: auto;
-    margin: auto; */
     gap: 10px;
   }
 

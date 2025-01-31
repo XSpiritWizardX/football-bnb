@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
         <NavLink to="/">Home</NavLink>
       </li>
       {isLoaded && (
-        <div>
+        <div className='nav-bar'>
           <ProfileButton user={sessionUser} />
         </div>
       )}
