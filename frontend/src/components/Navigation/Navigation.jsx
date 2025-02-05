@@ -4,11 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-
+// import {SpotList} from '../SpotList/SpotList.jsx'
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
+<>
+
     <ul>
       <li>
         <NavLink to="/">Home</NavLink>
@@ -18,7 +20,15 @@ function Navigation({ isLoaded }) {
           <ProfileButton user={sessionUser} />
         </div>
       )}
+
     </ul>
+
+
+
+</>
+
+
+
   );
 }
 

@@ -125,7 +125,11 @@ const validateQueryParams = (queryParams) => {
       include : [
         {model: Review}
 
-      ]
+      ],
+      // include : [
+      //   {model: SpotImage}
+
+      // ]
     });
 
     // console.log(spots[0].dataValues.Reviews)
