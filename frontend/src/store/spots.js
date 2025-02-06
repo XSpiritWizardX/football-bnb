@@ -36,19 +36,6 @@ const SET_SPOTS = '/api/spots';
   // };
 
 
-
-// export const fetchSpots = () => async (dispatch) => {
-//   const response = await fetch("/api/");
-//   const data = await response.json();
-//   dispatch(setSpots(data.spot));
-//   return response;
-// };
-
-
-
-
-
-
   // Reducer
   const spotsReducer = (state = {}, action) => {
     switch (action.type) {
@@ -58,8 +45,6 @@ const SET_SPOTS = '/api/spots';
         return state;
     }
   };
-
-
 
 
 
