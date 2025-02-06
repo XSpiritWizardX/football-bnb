@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import * as sessionActions from './store/session';
 
-// import SpotList from './components/SpotList/SpotList'
+import SpotList from './components/SpotList/SpotList'
 // import SpotShow from './components/SpotShow/SpotShow'
 // import SpotForm from './components/SpotForm/SpotForm'
 // import SpotDeleteForm from './components/SpotDeleteForm/SpotDeleteForm'
@@ -15,7 +15,7 @@ import * as sessionActions from './store/session';
 // import ReviewDeleteForm from './components/ReviewDeleteForm/ReviewDeleteForm'
 
 
-// import spots from '../../backend/db/seeders/20240726005814-spots'
+
 
 
 
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
 
       {
         path: '/',
-        // element: <SpotList spots={spots}/> // commented out so i can see the layout
+        element: <SpotList/>
       },
       // {
       //   path: '/spots/:spotId',
