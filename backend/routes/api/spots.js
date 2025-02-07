@@ -123,17 +123,15 @@ const validateQueryParams = (queryParams) => {
         limit,
         offset,
       include : [
-        {model: Review}
+        {model: Review},
+        {model: SpotImage}
 
-      ],
-      // include : [
-      //   {model: SpotImage}
+      ]
 
-      // ]
     });
 
     // console.log(spots[0].dataValues.Reviews)
-
+    console.log(spots)
 
     spots.map(spot => {
       const totalStars = spot.dataValues.Reviews.reduce((acc,review) => {
@@ -141,9 +139,17 @@ const validateQueryParams = (queryParams) => {
       },0)
       spot.dataValues.avgRating = Math.round(totalStars/spot.dataValues.Reviews.length *10)/10;
       delete spot.dataValues.Reviews
+
+
+
+      const previewImage = spot.dataValues.SpotImages.find(image => image.preview === true)
+      spot.dataValues.previewImage = previewImage.url
+      delete spot.dataValues.SpotImages
+
     })
 
-
+// map over spot-images  , find the image that has preview  === true.
+// take the url of that spot image and manually create "previewImage:image.url"
 
     res.status(200).json({
       Spots: spots,
