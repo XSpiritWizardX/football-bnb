@@ -1,9 +1,9 @@
 .profile-dropdown {
     display: visible;
-    
-    /* position: fixed;
-    top: 80px;
-    right: 30px; */
+
+    position: fixed;
+    top: 20px;
+    right: 30px;
 
 }
 .profile-dropdown.hidden {
