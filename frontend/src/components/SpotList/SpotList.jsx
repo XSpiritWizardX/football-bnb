@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSpots } from "../../store/spots";
 import './SpotList.css'
-
+import { MdOutlineStar } from "react-icons/md";
 
 const SpotList = () => {
 
@@ -34,7 +34,12 @@ const SpotList = () => {
               <p>{spot.description}</p>
               <p>${spot.price}</p>
               <div className="review-area">
-                  <p>{spot.avgRating}</p>
+                  <p>
+
+                    <MdOutlineStar />
+                    {spot.avgRating}
+
+                  </p>
                   {/* <p>{spot.reviews}</p> */}
               </div>
             </div>
