@@ -21,9 +21,12 @@ const SET_SPOTS = '/api/spots';
     if (response.ok) {
       const spots = await response.json();
       dispatch(setSpots(spots));
-      console.log("spots: ",spots )
+      // console.log("spots: ",spots )
     }
   };
+
+
+
 
 
   // export const fetchSpotImages = () => async (dispatch) => {

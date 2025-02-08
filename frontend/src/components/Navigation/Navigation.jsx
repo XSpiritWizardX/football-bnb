@@ -13,7 +13,10 @@ function Navigation({ isLoaded }) {
 
     <ul>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/">
+        <img className='home-image' src='/footballs.webp' />
+
+        </NavLink>
       </li>
       {isLoaded && (
         <div className='nav-bar'>

@@ -1,7 +1,9 @@
 // frontend/src/components/Navigation/ProfileButton.jsx
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { GiAmericanFootballBall } from "react-icons/gi";
+// import { GiAmericanFootballBall } from "react-icons/gi";
+import { CiMenuBurger } from "react-icons/ci";
+import { FaUserCircle } from "react-icons/fa";
 import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal/LoginFormModal';
@@ -48,7 +50,13 @@ function ProfileButton({ user }) {
   return (
     <>
       <button className="menu-button" onClick={toggleMenu}>
-        <GiAmericanFootballBall />
+        {/* <GiAmericanFootballBall /> */}
+        <div className='menu-icon'>
+        <CiMenuBurger />
+        </div>
+        <div className='user-icon' >
+        <FaUserCircle />
+        </div>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (

@@ -2,3 +2,9 @@
     display: flex;
     justify-self: end;
 }
+
+.home-image {
+    
+    width: 200px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+}

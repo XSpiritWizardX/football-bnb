@@ -32,6 +32,11 @@ const SpotList = () => {
               <img src={spot.previewImage} />
               <h1>{spot.name}</h1>
               <p>{spot.description}</p>
+              <p>${spot.price}</p>
+              <div className="review-area">
+                  <p>{spot.avgRating}</p>
+                  {/* <p>{spot.reviews}</p> */}
+              </div>
             </div>
           ))
         }
