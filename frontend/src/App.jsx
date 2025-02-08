@@ -84,7 +84,7 @@ const router = createBrowserRouter([
 
 
       {
-        path: '/spots',
+        path: '/',
         element: <SpotList/>
       },
       // {

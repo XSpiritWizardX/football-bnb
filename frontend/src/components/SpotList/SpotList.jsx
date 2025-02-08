@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSpots } from "../../store/spots";
-// import { fetchSpotImages} from './'
 import './SpotList.css'
 
 
@@ -21,13 +20,16 @@ const SpotList = () => {
 
   // doesnt load slice of state until after first render
 
+
+
   return (
     <div>
       <h1>Spots</h1>
       <div className="spot-list">
-        <div>
+        <div className="spot-card">
           {spots?.map(spot => (
             <div key={spot.id}>
+              <img src={spot.previewImage} />
               <h1>{spot.name}</h1>
               <p>{spot.description}</p>
             </div>
@@ -39,28 +41,7 @@ const SpotList = () => {
   );
 };
 
+
+
+
 export default SpotList;
-
-
-
-
-
-
-
-
-// function SpotList({spots}) {
-//   return (
-//     <div>
-//       <h2>Spot List</h2>
-//       <ul>
-//         {fruits.map(fruit => (
-//           <li key={spot.id}>
-//            {spot}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   )
-// }
-
-// export default SpotList

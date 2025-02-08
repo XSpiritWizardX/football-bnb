@@ -43,7 +43,7 @@ module.exports = {
        },
        {
         spotId: 6,
-        url:"https://static.wikia.nocookie.net/collegefootballmania/images/0/07/FedExField01.jpg/revision/latest/scale-to-width-down/310?cb=20141230020035",
+        url:"https://i0.wp.com/newspack-washingtoncitypaper.s3.amazonaws.com/uploads/2021/12/fedexfield-scaled.jpg?fit=2560%2C1345&ssl=1",
         preview:true
        },
        {

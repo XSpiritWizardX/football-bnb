@@ -1,6 +1,7 @@
 .spot-list {
     display: flex;
     flex-direction: column;
+    /* align-items: */
 }
 
 p {
@@ -9,4 +10,18 @@ p {
     justify-content: center;
     align-items: center;
 
+}
+
+/* .spot-card {
+  display: flexbox;
+  flex-direction: column;
+
+} */
+
+image{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px;
+    max-height: 200px;
 }
