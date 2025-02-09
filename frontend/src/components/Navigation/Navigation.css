@@ -1,10 +1,13 @@
 .nav-bar {
     display: flex;
-    justify-self: end;
+    justify-content: flex-end;
+    align-items: center;
+
+    
 }
 
 .home-image {
-    
-    width: 200px; /* Set the desired width */
+
+    width: 100px; /* Set the desired width */
     height: auto; /* Maintain aspect ratio */
 }

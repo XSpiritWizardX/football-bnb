@@ -1,9 +1,9 @@
-h1 {
+ h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
-.label {
+label {
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
@@ -18,7 +18,7 @@ form {
 
 .login-container {
     width: 400px;
-    height: 200px;
+    height: 230px;
 }
 
 .input {
@@ -33,5 +33,19 @@ button {
     margin-top: 10px;
     height: 40px;
     border-color: black;
+
+}
+
+
+button:hover{
+    cursor: pointer;
+}
+
+
+.demo-log-in {
+    color: teal;
+    background-color: white;
+    text-decoration: underline;
+
 
 }
