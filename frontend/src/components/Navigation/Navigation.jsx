@@ -12,17 +12,19 @@ function Navigation({ isLoaded }) {
 <>
 
     <div>
-      <div>
+      <div
+      className='header'
+      >
         <NavLink to="/">
         <img className='home-image' src='/footballs.webp' />
 
         </NavLink>
-      </div>
       {isLoaded && (
-        <div className='nav-bar'>
+        <span className='nav-bar'>
           <ProfileButton user={sessionUser} />
-        </div>
+        </span>
       )}
+      </div>
 
     </div>
 

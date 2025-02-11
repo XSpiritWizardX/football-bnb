@@ -25,15 +25,20 @@ const SpotList = () => {
   return (
     <div>
       <h1>Spots</h1>
-      <div className="spot-list">
-        <div className="spot-card">
+
+        <div className="spot-cards">
           {spots?.map(spot => (
-            <div key={spot.id}>
-              <img src={spot.previewImage} />
-              <h1>{spot.name}</h1>
-              <p>{spot.description}</p>
-              <p>${spot.price}</p>
+            <div
+            className="spot-card"
+            key={spot.id}
+            >
+              <img
+              className="image"
+              src={spot.previewImage}
+              />
+              <p>{spot.city}, {spot.state}</p>
               <div className="review-area">
+              <p>${spot.price}</p>
                   <p>
 
                     <MdOutlineStar />
@@ -46,7 +51,7 @@ const SpotList = () => {
           ))
         }
         </div>
-      </div>
+
     </div>
   );
 };

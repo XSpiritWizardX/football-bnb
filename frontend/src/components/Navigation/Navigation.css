@@ -3,11 +3,17 @@
     justify-content: flex-end;
     align-items: center;
 
-    
+
 }
 
 .home-image {
 
     width: 100px; /* Set the desired width */
     height: auto; /* Maintain aspect ratio */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    
 }

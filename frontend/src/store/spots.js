@@ -1,7 +1,7 @@
 // promise.all
 
 const SET_SPOTS = '/api/spots';
-// const SET_SPOTIMAGES = '/api/spot-images'
+
 
   // Action
   const setSpots = (spots) => ({
@@ -9,10 +9,6 @@ const SET_SPOTS = '/api/spots';
     spots,
   });
 
-  // const setSpotImages = (spotImages) => ({
-  //   type: SET_SPOTIMAGES,
-  //   spotImages,
-  // });
 
 
 
@@ -29,14 +25,6 @@ const SET_SPOTS = '/api/spots';
 
 
 
-  // export const fetchSpotImages = () => async (dispatch) => {
-  //   const response = await fetch('/api/spot-images');
-  //   if (response.ok) {
-  //     const spots = await response.json();
-  //     dispatch(setSpotImages(spots.spotImages));
-  //     console.log(spotImages)
-  //   }
-  // };
 
 
   // Reducer
