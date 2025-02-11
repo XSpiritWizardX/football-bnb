@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSpots } from "../../store/spots";
 import './SpotList.css'
 import { MdOutlineStar } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const SpotList = () => {
 
@@ -28,31 +29,61 @@ const SpotList = () => {
 
         <div className="spot-cards">
           {spots?.map(spot => (
+
+
+
+
             <div
             className="spot-card"
             key={spot.id}
             >
+
+
+        <div className="tooltip">
+
+            <span className="tooltiptext">
+                {spot.name}
+            </span>
+
+
+            <NavLink to={`/spots/${spot.id}`}  >
               <img
               className="image"
               src={spot.previewImage}
+
               />
-              <p>{spot.city}, {spot.state}</p>
-              <div className="review-area">
-              <p>${spot.price}</p>
-                  <p>
+            </NavLink>
+
+
+              <p>{spot.city}, {spot.state}
+
+                  <p className="stars">
 
                     <MdOutlineStar />
                     {spot.avgRating}
 
                   </p>
-                  {/* <p>{spot.reviews}</p> */}
+
+              </p>
+
+              <p>${spot.price}/night</p>
+
+
+
               </div>
             </div>
+
+
+
+
+
+
+
           ))
         }
         </div>
 
-    </div>
+</div>
   );
 };
 

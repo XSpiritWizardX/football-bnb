@@ -1,9 +1,8 @@
 
 p {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0%;
+    justify-content: space-between;
 
 }
 
@@ -11,7 +10,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 2% auto;
+    margin: auto;
     width: 90vw;
 
 }
@@ -27,26 +26,61 @@ p {
     max-width: 600px;
     min-height: 270px;
     text-align: center;
-    margin: 2% auto;
+    margin: auto;
     padding: 2%;
+
+
+    cursor: pointer;
 
 }
 
+.spot-card:hover {
 
+}
 
 .image{
     display:flex;
     margin: auto;
-    width: 250px; /* Set the desired width */
+    width: 275px; /* Set the desired width */
     height: 250px;
-    border:2px solid black ;
+    border:3px solid black ;
     border-radius: 10px;
+
 
 }
 
 
-.review-area {
-    display:flex;
-    justify-content: space-evenly;
 
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: relative;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
