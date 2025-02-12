@@ -49,5 +49,5 @@ button:hover{
     background-color: white;
     text-decoration: underline;
     margin: 2% auto;
-
+    cursor: pointer;
 }

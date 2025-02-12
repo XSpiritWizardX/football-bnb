@@ -27,6 +27,8 @@ const SET_SPOTS = '/api/spots';
 
 
 
+
+
   // Reducer
   const spotsReducer = (state = {}, action) => {
     switch (action.type) {
