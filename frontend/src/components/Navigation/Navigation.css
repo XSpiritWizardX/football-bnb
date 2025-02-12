@@ -7,7 +7,8 @@
 }
 
 .home-image {
-
+    position: fixed;
+    z-index: 1;
     width: 100px; /* Set the desired width */
     height: auto; /* Maintain aspect ratio */
 }
@@ -15,5 +16,5 @@
 .header {
     display: flex;
     justify-content: space-between;
-    
+
 }

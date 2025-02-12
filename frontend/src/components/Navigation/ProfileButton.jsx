@@ -58,38 +58,61 @@ function ProfileButton({ user }) {
         <FaUserCircle />
         </div>
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.firstName} {user.lastName}</li>
-            <li>{user.email}</li>
-            <li>
-              <button className="logout-button" onClick={logout}>
+          <div
+          className='auth-container'
+          >
+            <p
+            className='account-info'
+            >{user.firstName} {user.lastName}</p>
+            <p
+            className='account-info'
+            >{user.username}</p>
+            <p
+            className='account-info'
+            >{user.email}</p>
+
+            <a
+
+            >
+              manage spots
+            </a>
+
+            <p
+
+              className="logout-container"
+            >
+              <button
+              className='logout-button'
+              onClick={logout}>
                 Log Out
               </button>
-            </li>
-          </>
+            </p>
+          </div>
         ) : (
           <div className="auth-container">
 
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-              className="auth-button"
-            />
             <OpenModalMenuItem
               itemText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
               className="auth-button"
             />
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+              className="auth-button"
+            />
+
+
+
 
 
           </div>
         )}
-      </ul>
+      </div>
     </>
   );
 }
