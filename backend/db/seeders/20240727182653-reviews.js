@@ -14,7 +14,7 @@ module.exports = {
       {
         spotId: 1,
         userId: 3,
-        review: 'its not too bad if you arnt a prisoner',
+        review: 'example review',
         stars: 1,
         createdAt:Date.now(),
         updatedAt:Date.now()
@@ -22,7 +22,7 @@ module.exports = {
        {
          spotId: 2,
          userId: 2,
-         review: 'very spacey people but love the atmosphere, i would recommend',
+         review: 'example review',
          stars: 4,
          createdAt:Date.now(),
          updatedAt:Date.now()
@@ -30,7 +30,7 @@ module.exports = {
         {
           spotId: 3,
           userId: 1,
-          review: 'they serve the best tea and tell the best stories',
+          review: 'example review',
           stars: 5,
           createdAt:Date.now(),
           updatedAt:Date.now()
@@ -38,7 +38,7 @@ module.exports = {
          {
           spotId: 4,
           userId: 5,
-          review: 'I kissed my true love here. ',
+          review: 'example review',
           stars: 5,
           createdAt:Date.now(),
           updatedAt:Date.now()
@@ -46,7 +46,7 @@ module.exports = {
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
+          review: 'example review',
           stars: 3,
           createdAt:Date.now(),
           updatedAt:Date.now()
@@ -54,7 +54,7 @@ module.exports = {
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
+          review: 'example review',
           stars: 2,
           createdAt:Date.now(),
           updatedAt:Date.now()
@@ -62,15 +62,15 @@ module.exports = {
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
-          stars: 2,
+          review: 'example review',
+          stars: 4,
           createdAt:Date.now(),
           updatedAt:Date.now()
          },
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
+          review: 'example review',
           stars: 5,
           createdAt:Date.now(),
           updatedAt:Date.now()
@@ -78,15 +78,15 @@ module.exports = {
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
-          stars: 1,
+          review: 'example review',
+          stars: 4,
           createdAt:Date.now(),
           updatedAt:Date.now()
          },
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
+          review: 'example review',
           stars: 3,
           createdAt:Date.now(),
           updatedAt:Date.now()
@@ -94,15 +94,15 @@ module.exports = {
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
-          stars: 2,
+          review: 'example review',
+          stars: 4,
           createdAt:Date.now(),
           updatedAt:Date.now()
          },
          {
           spotId: 1,
           userId: 3,
-          review: 'its not too bad if you arnt a prisoner',
+          review: 'example review',
           stars: 4,
           createdAt:Date.now(),
           updatedAt:Date.now()
