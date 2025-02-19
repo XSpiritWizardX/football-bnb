@@ -8,6 +8,22 @@ import './Navigation.css';
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
+
+  const validUser = () => {
+    if(sessionUser !== null){
+      return (
+
+          <NavLink to="/spots/new"
+          className="create-a-spot"
+          >
+            create a spot
+          </NavLink>
+      )
+    }
+
+  }
+
+
   return (
 <>
 
@@ -19,11 +35,14 @@ function Navigation({ isLoaded }) {
         <img className='home-image' src='/footballs.webp' />
 
         </NavLink>
-          <NavLink to="/spots/new"
-          className="create-a-spot"
-          >
-            create a spot
-          </NavLink>
+
+        {validUser()}
+
+
+
+
+
+
       {isLoaded && (
         <span className='nav-bar'>
           <ProfileButton user={sessionUser} />
