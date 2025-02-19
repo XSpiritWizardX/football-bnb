@@ -19,6 +19,11 @@ function Navigation({ isLoaded }) {
         <img className='home-image' src='/footballs.webp' />
 
         </NavLink>
+          <NavLink to="/spots/new"
+          className="create-a-spot"
+          >
+            create a spot
+          </NavLink>
       {isLoaded && (
         <span className='nav-bar'>
           <ProfileButton user={sessionUser} />

@@ -7,8 +7,8 @@ import Navigation from './components/Navigation/Navigation';
 import * as sessionActions from './store/session';
 
 import SpotList from './components/SpotList/SpotList'
-// import SpotShow from './components/SpotShow/SpotShow'
-// import SpotForm from './components/SpotForm/SpotForm'
+import SpotShow from './components/SpotShow/SpotShow'
+import SpotForm from './components/SpotForm/SpotForm'
 // import SpotDeleteForm from './components/SpotDeleteForm/SpotDeleteForm'
 
 // import ReviewForm from './components/ReviewForm/ReviewForm'
@@ -87,18 +87,19 @@ const router = createBrowserRouter([
         path: '/',
         element: <SpotList/>
       },
-      // {
-      //   path: '/spots/:spotId',
-      //   element: <SpotShow spots={spots}/>
-      // },
-      // {
-      //   path: '/spots/new',
-      //   element: <SpotForm spots={spots}/>
-      // },
+      {
+        path: '/spots/:spotId',
+        element: <SpotShow/>
+      },
+      {
+        path: '/spots/new',
+        element: <SpotForm />
+      },
       // {
       //   path: '/spots/current',
       //   element: <SpotList spots={spots}/>
       // },
+      
       // {
       //   path: '/spots/current',
       //   element: <SpotDeleteForm spots={spots}/>

@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 const SpotList = () => {
 
   const dispatch = useDispatch();
-  const spots = useSelector((state) => state.spots.spots?.Spots || []);
+  const spots = useSelector((state) => state.spots.spots || []);
 
 
   useEffect(() => {

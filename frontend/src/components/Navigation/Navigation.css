@@ -7,7 +7,7 @@
 }
 
 .home-image {
-  
+
     z-index: 1;
     width: 100px; /* Set the desired width */
     height: auto; /* Maintain aspect ratio */
@@ -17,4 +17,9 @@
     display: flex;
     justify-content: space-between;
 
+}
+
+.create-a-spot {
+  display: flex;
+ align-self: flex-start;
 }

@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   // ADD REDUCERS HERE
   session: sessionReducer,
   spots: spotsReducer
- 
+
 });
 
 

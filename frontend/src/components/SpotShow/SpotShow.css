@@ -1,0 +1,70 @@
+.image-container {
+    display: grid;
+
+    grid-template-areas:
+ "main main image1 image3"
+ "main main image2 image4"
+ ;
+
+
+ margin: 20px auto;
+}
+
+.main-image {
+    grid-area: main;
+    max-width: 600px;
+    max-height: 600px;
+    height:608px;
+    width:600px;
+    margin: 5px 5px 5px 5px;
+    border: 2px solid black;
+    box-shadow: 8px 5px 15px 5px;
+}
+
+.image1 {
+    grid-area: image1;
+    max-width: 400px;
+    max-height: 400px;
+    width: 400px;
+    height: 300px;
+    margin: 5px 5px 5px 5px;
+    border: 2px solid black;
+    box-shadow: 8px 5px 15px 5px;
+
+}
+
+.image2 {
+    grid-area: image2;
+    max-width: 400px;
+    max-height: 400px;
+    width: 400px;
+    height: 300px;
+    margin: 5px 5px 5px 5px;
+    border: 2px solid black;
+    box-shadow: 8px 5px 15px 5px;
+
+}
+
+.image3 {
+    grid-area: image3;
+    max-width: 400px;
+    max-height: 400px;
+    width: 400px;
+    height: 300px;
+    margin: 5px 5px 5px 5px;
+    border: 2px solid black;
+    box-shadow: 8px 5px 15px 5px;
+
+}
+
+.image4 {
+    grid-area: image4;
+    max-width: 400px;
+    max-height: 400px;
+    width: 400px;
+    height: 300px;
+    margin: 5px 5px 5px 5px;
+    border: 2px solid black;
+    box-shadow: 8px 5px 15px 5px;
+
+}
