@@ -72,6 +72,10 @@ const SpotShow = () => {
               if the image does not have a picture in the
               array, it will use the null default image.
 
+                  adding this comment so tyhat i have something to commit.
+
+
+
               ALL SPOTS WILL CONTAIN AT LEAST
               1 IMAGE (main-image)
               */}
