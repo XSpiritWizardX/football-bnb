@@ -63,14 +63,17 @@ function SpotForm() {
 
   return (
     <div className='form-container'>
+      <form
+      onSubmit={handleSubmit}
+    className='create-spot-form'
+      >
+
       <h1>Create a new Spot</h1>
       <h3>Where&apos;s your place located?</h3>
       <p>
       Guests will only get your exact address once they booked a
       reservation.
       </p>
-      <form onSubmit={handleSubmit}>
-
 
         <label>
 
@@ -134,7 +137,7 @@ function SpotForm() {
 
 
 
-
+    <p>latitude and longitude are optional</p>
 
         <label>
 
@@ -167,9 +170,16 @@ function SpotForm() {
           <p>{errors.longitude}</p>
         )}
 
-<br />
-<br />
 
+        <h3>
+        Describe your place to guests
+
+        </h3>
+        <br/>
+        <p>
+ Mention the best features of your space, any special amentities like
+ fast wifi or parking, and what you love about the neighborhood.
+        </p>
 
 
         <label>
@@ -188,12 +198,14 @@ function SpotForm() {
         )}
 
 
-<br />
-<br />
 
 
+<h3>Create a title for your spot</h3>
 
-
+<p>
+Catch guests attention with a spot title that highlights what makes
+your place special.
+</p>
 
         <label>
 
@@ -211,7 +223,13 @@ function SpotForm() {
         )}
 
 
+<h3>Set a base price for your spot</h3>
 
+<p>
+
+Competitive pricing can help your listing stand out and rank higher
+in search results.
+</p>
 
         <label>
 
@@ -229,6 +247,13 @@ function SpotForm() {
         )}
 
 
+
+
+<h3>Liven up your spot with photos</h3>
+
+<p>
+Submit a link to at least one photo to publish your spot.
+</p>
 
 
         <label>
@@ -254,9 +279,9 @@ function SpotForm() {
 
         <input
           className='inputs'
-          placeholder='ImageTwo'
+          placeholder=' Image URL'
           type="text"
-          value={longitude}
+          value={imageTwo}
           onChange={(e) => setImageTwo(e.target.value)}
           // required
         />
@@ -271,7 +296,7 @@ function SpotForm() {
 
         <input
           className='inputs'
-          placeholder='ImageThree'
+          placeholder=' Image URL'
           type="text"
           value={imageThree}
           onChange={(e) => setImageThree(e.target.value)}
@@ -289,7 +314,7 @@ function SpotForm() {
 
         <input
           className='inputs'
-          placeholder='ImageFour'
+          placeholder=' Image URL'
           type="text"
           value={imageFour}
           onChange={(e) => setImageFour(e.target.value)}
@@ -307,7 +332,7 @@ function SpotForm() {
 
         <input
           className='inputs'
-          placeholder='ImageFive'
+          placeholder=' Image URL'
           type="text"
           value={imageFive}
           onChange={(e) => setImageFive(e.target.value)}
@@ -328,7 +353,12 @@ function SpotForm() {
 
 
 
-        <button type="submit">Create Spot</button>
+        <button
+        type="submit"
+        className='create-spot-button'
+        >
+          Create Spot
+          </button>
       </form>
     </div>
   );

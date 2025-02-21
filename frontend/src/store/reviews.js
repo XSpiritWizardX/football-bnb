@@ -1,29 +1,29 @@
 // // promise.all
 
-// const SET_REVIEWS = '/api/reviews';
-
-
-
-
-//   // Action
-//   const setReviews = (reviews) => ({
-//     type: SET_REVIEWS,
-//     reviews,
-//   });
+const SET_REVIEWS = '/api/spots/:spotId/reviews';
 
 
 
 
 
+  // Action
+  const setReviews = (reviews) => ({
+    type: SET_REVIEWS,
+    reviews,
+  });
 
-//  export const fetchReviews = () => async (dispatch) => {
-//     const response = await fetch('/api/reviews');
-//     if (response.ok) {
-//       const reviews = await response.json();
-//       dispatch(setReviews(reviews));
 
-//     }
-//   };
+
+
+
+ export const fetchReviews = (spotId) => async (dispatch) => {
+    const response = await fetch(`/api/spots/${spotId}/reviews`);
+    if (response.ok) {
+      const reviews = await response.json();
+      dispatch(setReviews(reviews));
+
+    }
+  };
 
 
 //   export const fetchOneReview = (reviewId) => async (dispatch) => {
@@ -41,24 +41,24 @@
 
 
 
-//   // Reducer
-//   const reviewReducer = (state = {}, action) => {
+  // Reducer
+  const reviewReducer = (state = {}, action) => {
 
-//     switch (action.type) {
+    switch (action.type) {
 
-//       case SET_SPOTS:
-//         return { ...state, reviews: action.reviews };
-//       // case SET_ONE_SPOT:
-//       //   return {...state, spot: action.spot};
-
-
-
-//       default:
-//         return state;
-//     }
-//   };
+      case SET_REVIEWS:
+        return { ...state, reviews: action.reviews };
+      // case SET_ONE_SPOT:
+      //   return {...state, spot: action.spot};
 
 
 
+      default:
+        return state;
+    }
+  };
 
-//   export default reviewReducer;
+
+
+
+  export default reviewReducer;

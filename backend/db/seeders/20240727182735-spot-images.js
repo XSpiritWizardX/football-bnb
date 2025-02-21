@@ -38,11 +38,7 @@ module.exports = {
         url:"https://dt1jqiolganbd.cloudfront.net/wp-content/uploads/2024/08/arrowheadstadium3.jpg.webp",
         preview:false
       },
-      {
-        spotId: 1,
-        url:"https://dt1jqiolganbd.cloudfront.net/wp-content/uploads/2024/08/arrowheadstadium3.jpg.webp",
-        preview:false
-      },
+
 
 
 
@@ -230,22 +226,22 @@ module.exports = {
        },
        {
         spotId: 8,
-        url:"https://static.clubs.nfl.com/image/upload/f_auto/lions/fmr2emhlhoc98zdavot4",
+        url:"https://th.bing.com/th/id/OIP.GJ_4NOJjHb-qzRReZCmoOAHaD4?rs=1&pid=ImgDetMain",
         preview:false
        },
        {
         spotId: 8,
-        url:"https://static.clubs.nfl.com/image/upload/f_auto/lions/fmr2emhlhoc98zdavot4",
+        url:"https://th.bing.com/th/id/OIP.-I63sMxPTxMip9OTG7iIrwHaDU?rs=1&pid=ImgDetMain",
         preview:false
        },
        {
         spotId: 8,
-        url:"https://static.clubs.nfl.com/image/upload/f_auto/lions/fmr2emhlhoc98zdavot4",
+        url:"https://th.bing.com/th/id/R.c47e6ae25f4d5f38d8db02ecc07013f0?rik=U8jAbHD8%2fenXRQ&riu=http%3a%2f%2fwww.info-stades.fr%2fuploads%2fstades%2fdetroit-ford-field-12975.jpg&ehk=QVKRgvHtr1aF1FZduMMm5Gw%2bdxgNl42eq4G8ywZyzBc%3d&risl=&pid=ImgRaw&r=0",
         preview:false
        },
        {
         spotId: 8,
-        url:"https://static.clubs.nfl.com/image/upload/f_auto/lions/fmr2emhlhoc98zdavot4",
+        url:"https://th.bing.com/th/id/OIP.zrBR3chZGlGDUQX9snCOyQHaD4?rs=1&pid=ImgDetMain",
         preview:false
        },
 

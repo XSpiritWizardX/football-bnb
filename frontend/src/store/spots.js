@@ -32,7 +32,6 @@ const SET_ONE_SPOT = '/api/spots/:spotId';
 
   export const fetchOneSpot = (spotId) => async (dispatch) => {
     const response = await fetch(`/api/spots/${spotId}`);
-    // console.log("spotzzzzzzz")
     if (response.ok) {
       console.log('found spot')
       const spot = await response.json();
@@ -49,7 +48,8 @@ export const createSpot = (spot) => async (dispatch) => {
     body: JSON.stringify({
       name,
       description,
-      price, mainImage,
+      price,
+      mainImage,
       imageTwo,
       imageThree,
       imageFour,

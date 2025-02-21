@@ -3,42 +3,54 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOneSpot } from "../../store/spots";
+import {fetchReviews} from "../../store/reviews"
 import { MdOutlineStar } from "react-icons/md";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './SpotShow.css'
 
 
 
 const SpotShow = () => {
-  //  const {name, city,state,country,images,decription,numReviews, avgStarReview, price} = props
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user)
   const spots = useSelector((state) => state.spots.spot || []);
+  const reviews = useSelector((state) => state.reviews.reviews?.Reviews || []);
   const { spotId } = useParams()
 
 
+  const reviewElements = [];
 
-  // console.log(spotId)
-
+  for (let i = 0; i < reviews.length; i++) {
+    reviewElements.push(
+      <div key={reviews[i].id}
+      className="review2"      >
+        <div
+        className="review3"
+        >{user?.firstName}{user?.lastName}: {reviews[i].review}</div>
+      </div>
+    );
+  }
 
   useEffect(() => {
-    // console.log('inside use effect')
+
     dispatch(fetchOneSpot(spotId));
+    dispatch(fetchReviews(spotId));
   }, [dispatch, spotId]);
 
-  // console.log(spots)
+
 
 
 
   // always add a question mark data loading
 
-
+// console.log(reviewElements)
 
 
 
   return (
     <div>
 
-      {spots && (
+      {spots && reviews && (
 
 
 
@@ -50,11 +62,18 @@ const SpotShow = () => {
         >
 
           <h2>{spots?.name}</h2>
+
+
+
           <h3>
 
             Address:{spots?.address}.  {spots?.city}, {spots?.state},   {spots?.country}
 
           </h3>
+
+
+
+
 
           <div
             className="image-container"
@@ -62,57 +81,68 @@ const SpotShow = () => {
 
 
 
-              {/* COMMENT BACK IN IMAGES TO SEE IT....  IT DOESNT WORK OTHERWISE
-             */}
-
-
-              {/*
-              give the spaces a default null image
-
-              if the image does not have a picture in the
-              array, it will use the null default image.
-
-                  adding this comment so tyhat i have something to commit.
-
-
-
-              ALL SPOTS WILL CONTAIN AT LEAST
-              1 IMAGE (main-image)
-              */}
-
-
 
               <img
                 className="main-image"
-                src={spots?.SpotImages[0].url}
+                src={spots?.SpotImages?.[0]?.url}
                 />
 
 
 
               <img
               className="image1"
-              src={spots?.SpotImages[1].url}
+              src={
+                !spots?.SpotImages?.[1]?.url ?
+
+                 "https://icones.pro/wp-content/uploads/2021/06/icone-d-image-grise-300x300.png"
+                : spots?.SpotImages?.[1]?.url
+              }
               />
 
                 <img
                 className="image2"
-                src={spots?.SpotImages[2].url}
+                src={
+                  !spots?.SpotImages?.[2]?.url ?
+
+                  "https://icones.pro/wp-content/uploads/2021/06/icone-d-image-grise-300x300.png"
+                 : spots?.SpotImages?.[2]?.url
+                }
                 />
 
 
               <img
               className="image3"
-              src={spots?.SpotImages[3].url}
+              src={
+                !spots?.SpotImages?.[3]?.url ?
+
+                "https://icones.pro/wp-content/uploads/2021/06/icone-d-image-grise-300x300.png"
+               : spots?.SpotImages?.[3]?.url
+              }
               />
 
 
               <img
               className="image4"
-              src={spots?.SpotImages[4].url}
+              src={
+                !spots?.SpotImages?.[4]?.url ?
+
+                 "https://icones.pro/wp-content/uploads/2021/06/icone-d-image-grise-300x300.png"
+                : spots?.SpotImages?.[4]?.url
+                }
               />
 
 
           </div>
+
+
+
+
+
+
+
+        <div
+        className="description-container"
+        >
 
 
 
@@ -124,7 +154,9 @@ const SpotShow = () => {
             </h2>
 
 
-          <div>
+          <div
+          className="description"
+          >
 
             {spots?.description}
           </div>
@@ -132,17 +164,26 @@ const SpotShow = () => {
 
 
 
-          <div>
 
 
 
-          <div>
+
+
+          <div
+          className="reserve-container"
+          >
+
+
+
+          <div
+          className="avgerage-rating"
+          >
 
 
 
 
             <MdOutlineStar />
-            {spots?.avgRating}
+            {!spots?.avgRating ? "New" : spots?.avgRating}
 
             {/*
             ^^^^^^^  -- if it doesnt have an average rating,
@@ -157,14 +198,111 @@ const SpotShow = () => {
           >
             price:${spots?.price}
           </div>
+
+
+
+
+          <NavLink to={`/spots/${spotId}/bookings`}  >
+              <button
+              className="reserve-button"
+              >
+
+              Reserve
+
+              </button>
+
+
+            </NavLink>
+
+
+
+
+
+
           </div>
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
           <br />
+          <br />
+          <br />
+          <br />
 
 
+
+
+
+
+
+
+              <div
+              className="reviews-container"
+              >
+
+
+                {/* average star rating */}
+
+                  <div
+                  className="avgerage-rating-big"
+                  >
+                    <MdOutlineStar />
+                    {!spots?.avgRating ? "New" : spots?.avgRating}
+
+                    {/*
+                    ^^^^^^^  -- if it doesnt have an average rating,
+                    it should display (New)
+                    #Reviews:{spots?.reviews.length}
+
+                    */}
+                  </div>
+
+
+
+
+                  <NavLink to={`/reviews/new`}  >
+              <button
+              className="review-button"
+              // onClick={e => {
+
+              // }}
+              >
+
+              Post Your Review
+
+              </button>
+
+
+            </NavLink>
+
+
+             <div
+             className="review-area"
+            //  key={reviews?.id}
+             >
+
+              <p>{reviewElements}</p>
+
+             </div>
+
+
+
+              </div>
 
 
 

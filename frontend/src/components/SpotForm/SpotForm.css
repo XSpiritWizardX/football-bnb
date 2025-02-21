@@ -1,0 +1,27 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 50px;
+  }
+
+  .create-spot-form {
+    width: 400px;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .inputs {
+
+    width: 380px;
+    box-shadow: 1px 1px 1px 1px black;
+  }
+
+  .create-spot-button {
+    background-color: crimson;
+    color: white;
+    box-shadow: 2px 2px 2px 2px black;
+  }
