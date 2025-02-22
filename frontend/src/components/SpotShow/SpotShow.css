@@ -118,7 +118,9 @@
 
 
 .reviews-container {
-
+display: flex;
+flex-direction: column;
+flex-flow: column;
 border: 2px solid black;
 
 }
@@ -128,12 +130,42 @@ border: 2px solid black;
     display: flex;
     justify-content: flex-end;
     height:20px;
-    width: 20px;
+    /* width: 20px; */
+    border: 2px solid red;
 }
 
 
 .review2 {
     border: 2px solid black;
+    margin: 8px;
+    padding: 5px;
+}
+
+.review3 {
+    flex-direction: column;
+}
+
+.div-of-divs {
+    display: flex;
+    flex-direction: column;
 }
 
 
+
+.seperation {
+    /* display: flex;
+    flex-wrap: wrap; */
+    margin: 8px 8px;
+}
+
+.big-star {
+    /* display: flex;
+    flex-direction: row; */
+    border: 2px solid green;
+    font-size: xx-large;
+}
+
+/* .review-text {
+    display: flex;
+    justify-content: flex-start;
+} */
