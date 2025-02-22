@@ -18,9 +18,14 @@
     box-shadow: 0px 1px 0px 0px gray;
     z-index: 2;
 
+    width:98vw;
+
 }
 
 .create-a-spot {
-  display: flex;
- align-self: flex-start;
+  padding: 16px;
+  font-style:oblique;
+  text-decoration: none;
+  color: rgb(0, 118, 182);
+  font-size: large;
 }

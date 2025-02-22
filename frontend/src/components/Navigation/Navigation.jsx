@@ -16,7 +16,7 @@ function Navigation({ isLoaded }) {
           <NavLink to="/spots/new"
           className="create-a-spot"
           >
-            create a spot
+           Create a New Spot
           </NavLink>
       )
     }
@@ -36,7 +36,6 @@ function Navigation({ isLoaded }) {
 
         </NavLink>
 
-        {validUser()}
 
 
 
@@ -45,6 +44,7 @@ function Navigation({ isLoaded }) {
 
       {isLoaded && (
         <span className='nav-bar'>
+          {validUser()}
           <ProfileButton user={sessionUser} />
         </span>
       )}

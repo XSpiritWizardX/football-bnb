@@ -49,7 +49,24 @@ const SpotShow = () => {
 
           </p>
 
-          {/* {deleteButton} */}
+
+          {/* <div
+          className="update-delete-buttons"
+          >
+            {!reviews?.[i]?.User?.id === user.id ? "" :
+
+            <button>Update</button>}
+            <button>Delete</button>}
+
+          </div> */}
+
+
+          {/* <button>update</button>
+          <button>delete</button> */}
+
+
+
+
         </div>
       </div>
     );
@@ -72,7 +89,9 @@ const SpotShow = () => {
 
 
   return (
-    <div>
+    <div
+    className="spot-show-page"
+    >
 
       {spots && reviews && (
 
@@ -199,29 +218,37 @@ const SpotShow = () => {
 
 
 
-          <div
-          className="avgerage-rating"
-          >
+                <div
+                  className="review-reserved"
+                  >
+
+                    <div
+                    className="price"
+                    >
+                      ${spots?.price} night
+                    </div>
+
+
+                    <MdOutlineStar />
+
+                    {!spots?.avgRating ? "New" : spots?.avgRating}
+
+
+
+                        <span
+                        className="seperation"
+                        >
+                          &#183;
+                        </span>
 
 
 
 
-            <MdOutlineStar />
-            {!spots?.avgRating ? "New" : spots?.avgRating}
+                      {!reviews ? "  New" : `  ${reviews.length} reviews`}
 
-            {/*
-            ^^^^^^^  -- if it doesnt have an average rating,
-            it should display (New)
-            #Reviews:{spots?.reviews.length}
 
-            */}
-          </div>
+                  </div>
 
-          <div
-          className="price"
-          >
-            price:${spots?.price}
-          </div>
 
 
 
@@ -261,7 +288,11 @@ const SpotShow = () => {
 
 
 
+              <span
+              className="spanner"
+              >
 
+              </span>
 
           <br />
           <br />
@@ -296,16 +327,16 @@ const SpotShow = () => {
                     <MdOutlineStar />
                     {!spots?.avgRating ? "New" : spots?.avgRating}
 
-                  </div>
-
                         <span
                         className="seperation"
                         >
                           &#183;
                         </span>
-
-
                       {!reviews ? "  New" : `  ${reviews.length} reviews`}
+
+
+                  </div>
+
 
 
                   </div>

@@ -8,7 +8,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal/LoginFormModal';
 import SignupFormModal from '../SignupFormModal/SignupFormModal';
-
+import { NavLink } from 'react-router-dom';
 
 import './ProfileButton.css'
 
@@ -65,24 +65,37 @@ function ProfileButton({ user }) {
           >
             <p
             className='account-info'
-            >{user.firstName} {user.lastName}</p>
-            <p
+            >Hello, {user.firstName} {user.lastName}</p>
+            {/* <p
             className='account-info'
-            >{user.username}</p>
+            >{user.username}</p> */}
             <p
             className='account-info'
             >{user.email}</p>
-
-            <a
-
+            <ln
+            className='profile-line'
+            ></ln>
+            <NavLink
+            className='nav-links'
+              to={'/spots/current'}
             >
-              manage spots
-            </a>
+              Manage Spots
+            </NavLink>
 
+              <NavLink
+              className='nav-links'
+              to={'/reviews/current'}
+              >
+                Manage Reviews
+              </NavLink>
+              <ln
+            className='profile-line'
+            ></ln>
             <p
 
               className="logout-container"
             >
+
               <button
               className='logout-button'
               onClick={logout}>
