@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-top: 50px;
+    margin-top: 70px;
   }
 
   .create-spot-form {
@@ -24,4 +24,19 @@
     background-color: crimson;
     color: white;
     box-shadow: 2px 2px 2px 2px black;
+  }
+
+  .lat-long-div {
+    display: flex;
+    justify-content: space-around;
+  }
+
+
+  .latitude {
+    margin-right: 40px;
+  }
+
+  .longitude {
+
+    width: 30px;
   }

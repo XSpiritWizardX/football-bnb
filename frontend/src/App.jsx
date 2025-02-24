@@ -9,6 +9,7 @@ import * as sessionActions from './store/session';
 import SpotList from './components/SpotList/SpotList'
 import SpotShow from './components/SpotShow/SpotShow'
 import SpotForm from './components/SpotForm/SpotForm'
+import BookingForm from './components/BookingForm/BookingForm'
 // import SpotDeleteForm from './components/SpotDeleteForm/SpotDeleteForm'
 
 // import ReviewForm from './components/ReviewForm/ReviewForm'
@@ -118,6 +119,10 @@ const router = createBrowserRouter([
       //   element: <ReviewDeleteForm reviews={reviews}/>
       // },
 
+      {
+        path:'/spots/:spotId/bookings',
+        element: <BookingForm/>
+      },
 
 
 

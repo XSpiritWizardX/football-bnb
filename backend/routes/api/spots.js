@@ -122,6 +122,10 @@ const validateQueryParams = (queryParams) => {
         where: filterConditions,
         limit,
         offset,
+        order: [
+          ['id', 'DESC'],
+          // ['name', 'ASC'],
+          ],
       include : [
         {model: Review},
         {model: SpotImage}
@@ -531,6 +535,10 @@ router.get('/:spotId/reviews', async (req, res) => {
 
     const reviews = await Review.findAll({
       where: { spotId },
+      order: [
+        ['id', 'DESC'],
+        // ['name', 'ASC'],
+        ],
       include: [
         {
           model: User,
@@ -645,6 +653,10 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const bookings = await Booking.findAll({
       where: { spotId },
+      order: [
+        ['id', 'DESC'],
+        // ['name', 'ASC'],
+        ],
       attributes: ["spotId", "startDate", "endDate"]
 
     });
@@ -654,6 +666,10 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const userBookings = await Booking.findAll({
       where: { spotId },
+      order: [
+        ['id', 'DESC'],
+        // ['name', 'ASC'],
+        ],
       include: [
         {
           model: User,

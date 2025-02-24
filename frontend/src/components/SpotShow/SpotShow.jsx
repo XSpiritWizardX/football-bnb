@@ -225,7 +225,7 @@ const SpotShow = () => {
                     <div
                     className="price"
                     >
-                      ${spots?.price} night
+                      ${spots?.price} / night
                     </div>
 
 

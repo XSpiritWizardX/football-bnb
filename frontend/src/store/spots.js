@@ -42,7 +42,7 @@ const SET_ONE_SPOT = '/api/spots/:spotId';
 
 
 export const createSpot = (spot) => async (dispatch) => {
-  const { name, description, price, mainImage, imageTwo, imageThree, imageFour, imageFive, address, city, state, country, latitude, longitude } = spot;
+  const { name, description, price, mainImage, imageTwo, imageThree, imageFour, imageFive, address, city, state, zipcode, country, latitude, longitude } = spot;
   const response = await fetch("/api/spots", {
     method: "POST",
     body: JSON.stringify({
@@ -57,6 +57,7 @@ export const createSpot = (spot) => async (dispatch) => {
       address,
       city,
       state,
+      zipcode,
       country,
       latitude,
       longitude

@@ -1,0 +1,14 @@
+.reserve-booking-ok-button {
+    display: flex;
+    justify-self: center;
+    text-decoration: none;
+}
+
+
+.reserve-booking-nav-link{
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+}
+
+

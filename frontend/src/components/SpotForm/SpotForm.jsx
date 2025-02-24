@@ -9,6 +9,7 @@ function SpotForm() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [zipcode, setZipcode] = useState();
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [description, setDescription] = useState("")
@@ -40,6 +41,7 @@ function SpotForm() {
           address,
           city,
           state,
+          zipcode,
           country,
           latitude,
           longitude
@@ -135,14 +137,39 @@ function SpotForm() {
         {errors.state && <p>{errors.state}</p>}
 
 
+        <label>
 
 
-    <p>latitude and longitude are optional</p>
+
+
+        <input
+          className='inputs'
+          placeholder='Zipcode'
+          type="text"
+          value={zipcode}
+          onChange={(e) => setZipcode(e.target.value)}
+          required
+        />
+        </label>
+        {errors.state && <p>{errors.state}</p>}
+
+
+
+
+
+    <p><br/>latitude and longitude are optional<br/>If you are uncertain, put a (0) for both latitude and longitude</p>
+
+
+    <div
+    className='lat-long-div'
+    >
+
+
 
         <label>
 
           <input
-            className='inputs'
+            className='latitude'
             placeholder='Latitude'
             type="decimal"
             value={latitude}
@@ -158,7 +185,7 @@ function SpotForm() {
         <label>
 
           <input
-            className='inputs'
+            className='longitde'
             placeholder='Longitude'
             type="decimal"
             value={longitude}
@@ -169,6 +196,11 @@ function SpotForm() {
         {errors.longitude && (
           <p>{errors.longitude}</p>
         )}
+
+
+    </div>
+
+
 
 
         <h3>
@@ -235,7 +267,7 @@ in search results.
 
         <input
           className='inputs'
-          placeholder='Price'
+          placeholder='Price per night (USD)'
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -260,7 +292,7 @@ Submit a link to at least one photo to publish your spot.
 
         <input
           className='inputs'
-          placeholder='Main Image'
+          placeholder='Preview Image URL'
           type="text"
           value={mainImage}
           onChange={(e) => setMainImage(e.target.value)}
