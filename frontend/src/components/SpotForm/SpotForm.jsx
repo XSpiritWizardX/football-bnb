@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as spotActions from '../../store/spots';
 import './SpotForm.css';
 
+
 function SpotForm() {
   const dispatch = useDispatch();
   const [country, setCountry] = useState("");
@@ -388,6 +389,8 @@ Submit a link to at least one photo to publish your spot.
         <button
         type="submit"
         className='create-spot-button'
+        // onClick="this.form.reset();"
+        // disabled
         >
           Create Spot
           </button>

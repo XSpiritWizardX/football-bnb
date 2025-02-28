@@ -11,11 +11,29 @@ function LoginFormModal() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  // const [disabled, setDisabled] = useState(true);
   const { closeModal } = useModal();
+
+
+const isDisabled = !credential ||
+!password ||
+ credential.length < 4 ||
+  password.length < 6;
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
+    // if(!credential ||
+    //    ! password ||
+    //     credential.length < 4 ||
+    //      password.length < 6){
+    //   // setErrors({message:"The provided credentials were invalid"})
+    //       setDisabled(true)
+    //     }
+    //     else {
+    //       setDisabled(false)
+    //     }
     return dispatch(sessionActions.login({ credential, password }))
       .then(closeModal)
       .catch(async (res) => {
@@ -40,6 +58,11 @@ function LoginFormModal() {
         }
     });
 };
+
+
+
+
+
 
 
   return (
@@ -70,7 +93,11 @@ function LoginFormModal() {
         {errors.credential && (
           <p>{errors.credential}</p>
         )}
-        <button type="submit">Log In</button>
+        <button type="submit"
+        disabled={isDisabled}
+        >
+          Log In
+        </button>
 
         <a
         className='demo-log-in'

@@ -33,7 +33,7 @@ const SET_ONE_SPOT = '/api/spots/:spotId';
   export const fetchOneSpot = (spotId) => async (dispatch) => {
     const response = await fetch(`/api/spots/${spotId}`);
     if (response.ok) {
-      console.log('found spot')
+      // console.log('found spot')
       const spot = await response.json();
       dispatch(setOneSpot(spot));
 

@@ -12,7 +12,7 @@ import SpotForm from './components/SpotForm/SpotForm'
 import BookingForm from './components/BookingForm/BookingForm'
 // import SpotDeleteForm from './components/SpotDeleteForm/SpotDeleteForm'
 
-// import ReviewForm from './components/ReviewForm/ReviewForm'
+// import ReviewModal from './components/ReviewModal/ReviewModal'
 // import ReviewDeleteForm from './components/ReviewDeleteForm/ReviewDeleteForm'
 
 
@@ -111,8 +111,8 @@ const router = createBrowserRouter([
       //   element: <SpotDeleteForm spots={spots}/>
       // },
       // {
-      //   path: '/reviews/current',
-      //   element: <ReviewForm reviews={reviews}/>
+      //   path: '/reviews/new',
+      //   element: <ReviewForm/>
       // },
       // {
       //   path: '/reviews/current',

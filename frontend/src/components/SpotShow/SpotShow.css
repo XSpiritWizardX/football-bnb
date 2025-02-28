@@ -220,3 +220,34 @@ flex-flow: column;
 .review-text {
    font-style: italic;
 }
+
+.review-button {
+    width: 10vw;
+}
+
+
+
+
+
+
+
+@media(max-width: 768px) {
+    .image-container {
+        display: block;
+        flex-direction: column;
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+
+    .reserve-container {
+        display: block;
+        max-width: 100%;
+        width: 100%;
+
+    }
+    .review-button {
+        display: block;
+        width: 100%;
+    }
+}

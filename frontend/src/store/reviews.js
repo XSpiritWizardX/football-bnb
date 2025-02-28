@@ -37,6 +37,10 @@ const SET_REVIEWS = '/api/spots/:spotId/reviews';
 
 
 
+// post a review in review modal
+
+
+
 
 
 

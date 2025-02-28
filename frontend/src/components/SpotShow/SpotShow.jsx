@@ -6,6 +6,8 @@ import { fetchOneSpot } from "../../store/spots";
 import {fetchReviews} from "../../store/reviews"
 import { MdOutlineStar} from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import ReviewModal from '../ReviewModal/ReviewModal';
 import './SpotShow.css'
 
 
@@ -344,20 +346,24 @@ const SpotShow = () => {
 
 
 
-                  <NavLink to={`/reviews/new`}  >
-              <button
+                  {/* <NavLink to={`/reviews/new`}  > */}
+              {/* <button
               className="review-button"
-              // onClick={e => {
 
-              // }}
               >
 
               Post Your Review
 
-              </button>
+              </button> */}
+                <OpenModalMenuItem
+              itemText="Post Your Review"
+
+              modalComponent={<ReviewModal />}
+              className="review-button"
+            />
 
 
-            </NavLink>
+            {/* </NavLink> */}
 
 
              <div
