@@ -22,8 +22,13 @@ function SpotForm() {
   const [imageFour, setImageFour] = useState("")
   const [imageFive, setImageFive] = useState("")
 
-
   const [errors, setErrors] = useState({});
+
+
+
+
+
+
 
 
   const handleSubmit = (e) => {
@@ -34,7 +39,8 @@ function SpotForm() {
         spotActions.createSpot({
           name,
           description,
-          price, mainImage,
+          price,
+          mainImage,
           imageTwo,
           imageThree,
           imageFour,
@@ -60,6 +66,32 @@ function SpotForm() {
       confirmPassword: "Confirm Password field must be the same as the Password field"
     });
   };
+
+
+
+
+
+  const isDisabled =
+  !name ||
+  !country ||
+  !address ||
+  !city ||
+  !state ||
+  !zipcode ||
+  !description ||
+  !price ||
+  !mainImage;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -390,11 +422,17 @@ Submit a link to at least one photo to publish your spot.
         type="submit"
         className='create-spot-button'
         // onClick="this.form.reset();"
-        // disabled
+        disabled={isDisabled}
         >
           Create Spot
           </button>
+
+
+
+
+
       </form>
+
     </div>
   );
 }

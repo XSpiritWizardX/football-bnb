@@ -10,6 +10,7 @@ import SpotList from './components/SpotList/SpotList'
 import SpotShow from './components/SpotShow/SpotShow'
 import SpotForm from './components/SpotForm/SpotForm'
 import BookingForm from './components/BookingForm/BookingForm'
+import CurrentSpots from './components/CurrentSpots/CurrentSpots';
 // import SpotDeleteForm from './components/SpotDeleteForm/SpotDeleteForm'
 
 // import ReviewModal from './components/ReviewModal/ReviewModal'
@@ -101,10 +102,10 @@ const router = createBrowserRouter([
       //   path: '/spots/:spotId/bookings',
       //   element: <BookingForm/>
       // },
-      // {
-      //   path: '/spots/current',
-      //   element: <SpotList spots={spots}/>
-      // },
+      {
+        path: '/spots/current',
+        element: <CurrentSpots/>
+      },
 
       // {
       //   path: '/spots/current',
