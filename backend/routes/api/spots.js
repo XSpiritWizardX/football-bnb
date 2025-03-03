@@ -183,7 +183,12 @@ router.get('/current', requireAuth, async (req, res) => {
     const userSpots = await Spot.findAll({
       where: { ownerId: currentUserId },
       include : [
-        {model: Review}
+        {
+          model: Review
+        },
+        {
+          model: SpotImage
+        }
 
       ]
     });

@@ -240,7 +240,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
       });
     }
 
-    
+
 
     await review.destroy();
 

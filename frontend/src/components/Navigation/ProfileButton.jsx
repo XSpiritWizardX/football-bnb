@@ -96,11 +96,29 @@ function ProfileButton({ user }) {
               className="logout-container"
             >
 
+
+
+             { /*
+              NEED TO FIND A WAY TO ROUTE TO HOME PAGE AFTER LOGOUT
+             */}
+
+
+              {/* <NavLink
+              className='logout-navy-linkz'
+              to='/'
+              > */}
+
               <button
               className='logout-button'
               onClick={logout}>
                 Log Out
               </button>
+
+              {/* </NavLink> */}
+
+
+
+
             </p>
           </div>
         ) : (

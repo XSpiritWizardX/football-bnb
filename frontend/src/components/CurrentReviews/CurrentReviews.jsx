@@ -103,7 +103,7 @@ for (let i = 0; i < reviews.length; i++) {
 
                 <div
                 className="review-card"
-                key={review.id}
+                key={review?.id}
                 >
 
 
@@ -111,7 +111,7 @@ for (let i = 0; i < reviews.length; i++) {
 
                 <h3>
 
-                    {review.Spot.name}
+                    {review?.Spot?.name}
                 </h3>
 
 
@@ -123,7 +123,7 @@ for (let i = 0; i < reviews.length; i++) {
         </h3>
 
                 <p>
-                    {review.review}
+                    {review?.review}
                 </p>
 
 

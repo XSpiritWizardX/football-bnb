@@ -90,23 +90,24 @@ const CurrentSpots = () => {
                 <NavLink to={`/spots/${spot.id}`}  >
               <img
               className="image"
-              src={spot.previewImage}
+            //   src={spot?.spotImages?.[0]?.url}
+            src={spot?.SpotImages?.[0]?.url}
 
               />
             </NavLink>
 
-                <p>{spot.city}, {spot.state}
+                <p>{spot?.city}, {spot?.state}
 
                     <p className="stars">
 
                         <MdOutlineStar />
-                        {spot.avgRating}
+                        {spot?.avgRating}
 
                     </p>
 
                 </p>
 
-                <p>${spot.price}/night</p>
+                <p>${spot?.price}/night</p>
 
 
 

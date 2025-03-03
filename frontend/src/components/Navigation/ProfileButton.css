@@ -108,3 +108,19 @@
     color:white;
     background-color: darkgray;
   }
+
+  /*
+      NEED to find a way to route to home page after logout
+  */
+
+  /* .logout-navy-linkz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: auto;
+    color:white;
+    background-color: darkgray;
+    border-radius: 38%;
+    cursor: pointer;
+  } */
