@@ -41,6 +41,19 @@ const SET_ONE_SPOT = '/api/spots/:spotId';
   };
 
 
+
+  export const fetchCurrentSpots = () => async (dispatch) => {
+    const response = await fetch('/api/spots/current');
+    if (response.ok) {
+      const spots = await response.json();
+      dispatch(setSpots(spots));
+
+    }
+  };
+
+
+
+
 export const createSpot = (spot) => async (dispatch) => {
   const { name, description, price, mainImage, imageTwo, imageThree, imageFour, imageFive, address, city, state, zipcode, country, latitude, longitude } = spot;
   const response = await fetch("/api/spots", {

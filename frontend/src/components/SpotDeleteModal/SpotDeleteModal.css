@@ -1,0 +1,20 @@
+
+.confirm-delete-text {
+    margin: 0px 60px;
+}
+
+
+
+.delete-spotty-button {
+color: white;
+background-color: rgb(216, 133, 133);
+box-shadow: 4px 2px black;
+}
+
+.keep-spot-button {
+    color: white;
+    background-color: rgba(94, 94, 94, 0.699);
+    box-shadow: 4px 2px black;
+}
+
+

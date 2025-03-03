@@ -1,3 +1,38 @@
 h1{
     text-decoration: solid;
+
+}
+
+.manage-spot-button-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.update-button {
+    margin: 4px 6px;
+    width: 80px;
+    height: 24px;
+    background-color: dimgrey;
+    color:white;
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.delete-button {
+    margin: 4px 6px;
+    width: 80px;
+    height: 24px;
+    background-color: dimgrey;
+    color:white;
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.manage-to-create-spot {
+    display: flex;
+
+align-items: center;
+    flex-direction: column;
+}
+
+.navy{
+    margin: 0px 10px;
 }

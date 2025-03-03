@@ -25,6 +25,14 @@ const SET_REVIEWS = '/api/spots/:spotId/reviews';
     }
   };
 
+  export const fetchCurrentReviews = () => async (dispatch) => {
+    const response = await fetch('/api/reviews/current');
+    if (response.ok) {
+      const reviews = await response.json();
+      dispatch(setReviews(reviews));
+
+    }
+  };
 
 //   export const fetchOneReview = (reviewId) => async (dispatch) => {
 //     const response = await fetch(`/api/reviews/${reviewId}`);

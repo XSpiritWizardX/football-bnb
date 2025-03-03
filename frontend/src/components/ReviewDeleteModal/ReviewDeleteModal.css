@@ -2,3 +2,21 @@
     should look exactly like the spots one
 
 */
+
+.confirm-delete-text {
+    margin: 0px 60px;
+}
+
+
+
+.delete-review-button {
+color: white;
+background-color: rgb(216, 133, 133);
+box-shadow: 4px 2px black;
+}
+
+.keep-review-button {
+    color: white;
+    background-color: rgba(94, 94, 94, 0.699);
+    box-shadow: 4px 2px black;
+}
