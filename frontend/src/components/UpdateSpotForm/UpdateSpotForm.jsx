@@ -1,10 +1,18 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spots';
-import './SpotForm.css';
+import './UpdateSpotForm.css';
+
+import { fetchOneSpot } from '../../store/spots';
 
 
-function SpotForm() {
+
+function UpdateSpotForm() {
+
+
+
   const dispatch = useDispatch();
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
@@ -25,8 +33,8 @@ function SpotForm() {
   const [errors, setErrors] = useState({});
 
 
-
-
+  const spot = useSelector((state) => state.spots.spot || []);
+  const { spotId } = useParams()
 
 
 
@@ -90,6 +98,11 @@ function SpotForm() {
 
 
 
+  useEffect(() => {
+
+    dispatch(fetchOneSpot(spotId));
+
+  }, [dispatch, spotId]);
 
 
 
@@ -103,7 +116,7 @@ function SpotForm() {
     className='create-spot-form'
       >
 
-      <h1>Create a new Spot</h1>
+      <h1>Update Your Spot</h1>
       <h3>Where&apos;s your place located?</h3>
       <p>
       Guests will only get your exact address once they booked a
@@ -114,7 +127,7 @@ function SpotForm() {
 
           <input
             className='inputs'
-            placeholder='Country'
+            placeholder={spot.country}
             type="text"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
@@ -130,7 +143,7 @@ function SpotForm() {
 
           <input
             className='inputs'
-            placeholder='Address'
+            placeholder={spot.address}
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
@@ -144,7 +157,7 @@ function SpotForm() {
 
           <input
             className='inputs'
-            placeholder='City'
+            placeholder={spot.city}
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
@@ -160,7 +173,7 @@ function SpotForm() {
 
           <input
             className='inputs'
-            placeholder='State'
+            placeholder={spot.state}
             type="text"
             value={state}
             onChange={(e) => setState(e.target.value)}
@@ -177,7 +190,7 @@ function SpotForm() {
 
         <input
           className='inputs'
-          placeholder='Zipcode'
+          placeholder={spot.zipcode}
           type="text"
           value={zipcode}
           onChange={(e) => setZipcode(e.target.value)}
@@ -203,7 +216,7 @@ function SpotForm() {
 
           <input
             className='latitude'
-            placeholder='Latitude'
+            placeholder={spot.latitude || "latitude"}
             type="decimal"
             value={latitude}
             onChange={(e) => setLatitude(e.target.value)}
@@ -218,15 +231,17 @@ function SpotForm() {
         <label>
 
           <input
-            className='longitude'
-            placeholder='Longitude'
+            className='longitde'
+            placeholder={spot.longitude || "longitude"}
             type="decimal"
             value={longitude}
             onChange={(e) => setLongitude(e.target.value)}
             // required
           />
         </label>
-        {errors.longitude && <p>{errors.longitude}</p>}
+        {errors.longitude && (
+          <p>{errors.longitude}</p>
+        )}
 
 
     </div>
@@ -249,7 +264,7 @@ function SpotForm() {
 
         <textarea
           className='inputs'
-          placeholder='Description'
+          placeholder={spot.description}
           type="textarea"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -274,7 +289,7 @@ your place special.
 
         <input
           className='inputs'
-          placeholder='Name of your spot'
+          placeholder={spot.name}
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -297,8 +312,9 @@ in search results.
         <label>
 
         <input
+
           className='inputs'
-          placeholder='Price per night (USD)'
+          placeholder={spot.price}
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
@@ -323,7 +339,7 @@ Submit a link to at least one photo to publish your spot.
 
         <input
           className='inputs'
-          placeholder='Preview Image URL'
+          placeholder={spot?.SpotImages?.[0]?.url}
           type="text"
           value={mainImage}
           onChange={(e) => setMainImage(e.target.value)}
@@ -342,7 +358,11 @@ Submit a link to at least one photo to publish your spot.
 
         <input
           className='inputs'
-          placeholder=' Image URL'
+          placeholder= {
+            !spot?.SpotImages?.[1]?.url ? "Image Url"
+            :
+             spot?.SpotImages?.[1]?.url
+            }
           type="text"
           value={imageTwo}
           onChange={(e) => setImageTwo(e.target.value)}
@@ -359,7 +379,11 @@ Submit a link to at least one photo to publish your spot.
 
         <input
           className='inputs'
-          placeholder=' Image URL'
+          placeholder={
+            !spot?.SpotImages?.[2]?.url ? "Image Url"
+            :
+             spot?.SpotImages?.[2]?.url
+            }
           type="text"
           value={imageThree}
           onChange={(e) => setImageThree(e.target.value)}
@@ -377,7 +401,11 @@ Submit a link to at least one photo to publish your spot.
 
         <input
           className='inputs'
-          placeholder=' Image URL'
+          placeholder={
+            !spot?.SpotImages?.[3]?.url ? "Image Url"
+            :
+             spot?.SpotImages?.[3]?.url
+            }
           type="text"
           value={imageFour}
           onChange={(e) => setImageFour(e.target.value)}
@@ -395,7 +423,11 @@ Submit a link to at least one photo to publish your spot.
 
         <input
           className='inputs'
-          placeholder=' Image URL'
+          placeholder={
+            !spot?.SpotImages?.[4]?.url ? "Image Url"
+            :
+             spot?.SpotImages?.[4]?.url
+            }
           type="text"
           value={imageFive}
           onChange={(e) => setImageFive(e.target.value)}
@@ -422,7 +454,7 @@ Submit a link to at least one photo to publish your spot.
         // onClick="this.form.reset();"
         disabled={isDisabled}
         >
-          Create Spot
+          Update Spot
           </button>
 
 
@@ -435,4 +467,4 @@ Submit a link to at least one photo to publish your spot.
   );
 }
 
-export default SpotForm;
+export default UpdateSpotForm;

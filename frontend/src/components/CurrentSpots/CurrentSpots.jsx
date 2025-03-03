@@ -15,7 +15,7 @@ const CurrentSpots = () => {
 
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.spots || []);
-
+// const { spotId } = useParams()
 
   useEffect(() => {
     dispatch(fetchCurrentSpots());
@@ -118,11 +118,28 @@ const CurrentSpots = () => {
                 className="manage-spot-button-container"
                 >
 
+
+
+
+                <NavLink to={`/spots/${spot.id}/edit`}  >
                     <button
                     className="update-button"
                     >
-                        Update
+
+                    Update
+
                     </button>
+
+
+                </NavLink>
+
+                    {/* <button
+                    className="update-button"
+                    >
+                        Update
+                    </button> */}
+
+
 
 
                     <OpenModalMenuItem

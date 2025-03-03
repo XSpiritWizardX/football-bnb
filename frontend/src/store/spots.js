@@ -83,6 +83,33 @@ export const createSpot = (spot) => async (dispatch) => {
 
 
 
+export const UpdateSpot = (spot) => async (dispatch) => {
+  const { name, description, price, mainImage, imageTwo, imageThree, imageFour, imageFive, address, city, state, zipcode, country, latitude, longitude } = spot;
+  const response = await fetch("/api/spots", {
+    method: "PUT",
+    body: JSON.stringify({
+      name,
+      description,
+      price,
+      mainImage,
+      imageTwo,
+      imageThree,
+      imageFour,
+      imageFive,
+      address,
+      city,
+      state,
+      zipcode,
+      country,
+      latitude,
+      longitude
+    })
+  });
+  const data = await response.json();
+  dispatch(setSpots(data.spots));
+  return response;
+};
+
 
   // Reducer
   const spotsReducer = (state = {}, action) => {

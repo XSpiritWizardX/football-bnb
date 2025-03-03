@@ -12,7 +12,7 @@ import SpotForm from './components/SpotForm/SpotForm'
 import BookingForm from './components/BookingForm/BookingForm'
 import CurrentSpots from './components/CurrentSpots/CurrentSpots';
 import CurrentReviews from './components/CurrentReviews/CurrentReviews';
-// import SpotDeleteForm from './components/SpotDeleteForm/SpotDeleteForm'
+import UpdateSpotForm from './components/UpdateSpotForm/UpdateSpotForm';
 
 // import ReviewModal from './components/ReviewModal/ReviewModal'
 // import ReviewDeleteForm from './components/ReviewDeleteForm/ReviewDeleteForm'
@@ -91,28 +91,22 @@ const router = createBrowserRouter([
         path: '/',
         element: <SpotList/>
       },
+
       {
         path: '/spots/:spotId',
         element: <SpotShow/>
       },
+
       {
         path: '/spots/new',
         element: <SpotForm/>
       },
-      // {
-      //   path: '/spots/:spotId/bookings',
-      //   element: <BookingForm/>
-      // },
+
       {
         path: '/spots/current',
         element: <CurrentSpots/>
       },
 
-
-      // {
-      //   path: '/reviews/new',
-      //   element: <ReviewForm/>
-      // },
       {
         path: '/reviews/current',
         element: <CurrentReviews/>
@@ -122,6 +116,12 @@ const router = createBrowserRouter([
         path:'/spots/:spotId/bookings',
         element: <BookingForm/>
       },
+
+      {
+        path:'/spots/:spotId/edit',
+        element: <UpdateSpotForm/>
+      },
+
 
 
 
