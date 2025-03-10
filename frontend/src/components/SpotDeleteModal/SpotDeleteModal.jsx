@@ -1,31 +1,48 @@
 
 
-import { useState } from 'react';
-import * as sessionActions from '../../store/session';
+
+import * as spotActions from '../../store/spots';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import './SpotDeleteModal.css';
 
-function SpotDeleteModal() {
+
+
+function SpotDeleteModal({ spotId }) {
   const dispatch = useDispatch();
-  // const [credential, setCredential] = useState("");
-  // const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors({});
-    return dispatch(sessionActions)
-      .then(closeModal)
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
+  const handleSubmit = async () => {
+    console.log("Spot ID before deleting:", spotId);
+    if (!spotId) {
+      alert("Error: No Spot ID provided!");  // Debugging check
+      return;
+    }
+
+    try {
+      await dispatch(spotActions.deleteSpot(spotId));
+      alert("Spot deleted successfully!");
+      closeModal();
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
+
+// function SpotDeleteModal({spotId}) {
+//   const dispatch = useDispatch();
+//   // const [credential, setCredential] = useState("");
+//   // const [password, setPassword] = useState("");
+
+//   const { closeModal } = useModal();
+
+
+//   const handleSubmit = async () => {
+
+//       await dispatch(spotActions.deleteSpot(spotId));
+//       alert("Spot deleted successfully!");
+
+//   };
 
 
   return (
@@ -41,9 +58,7 @@ function SpotDeleteModal() {
       </p>
       <form onSubmit={handleSubmit}>
 
-        {errors.credential && (
-          <p>{errors.credential}</p>
-        )}
+
 
 
         <button type="submit"
@@ -68,5 +83,10 @@ function SpotDeleteModal() {
 
   );
 }
+
+
+
+
+
 
 export default SpotDeleteModal;

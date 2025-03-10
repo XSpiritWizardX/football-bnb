@@ -243,7 +243,8 @@ router.get('/:spotId', async (req, res) => {
 
         },
         {
-          model: SpotImage
+          model: SpotImage,
+          order:["ASC"]
         },
         {
           model: User
@@ -319,12 +320,12 @@ router.post('/',requireAuth, async (req, res) => {
     if(!req.body.country){
       res.status(400).json({message: "Country is required " })
     }
-    if(!req.body.lat){
-      res.status(400).json({message: "latitude is required " })
-    }
-    if(!req.body.lng){
-      res.status(400).json({message: "longitude is required " })
-    }
+    // if(!req.body.lat){
+    //   res.status(400).json({message: "latitude is required " })
+    // }
+    // if(!req.body.lng){
+    //   res.status(400).json({message: "longitude is required " })
+    // }
     if(!req.body.name){
       res.status(400).json({message: "name is required " })
     }

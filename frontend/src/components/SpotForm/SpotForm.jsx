@@ -1,18 +1,23 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as spotActions from '../../store/spots';
+import { useSelector } from 'react-redux';
 import './SpotForm.css';
 
 
+
 function SpotForm() {
+  const userId = useSelector(state => state.session.user.id)
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [zipcode, setZipcode] = useState();
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
   const [description, setDescription] = useState("")
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -31,59 +36,39 @@ function SpotForm() {
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (errors.length === 0) {
+
+    if (Object.values(errors).length === 0) {
       setErrors({});
-      return dispatch(
+
+     const createASpot = await dispatch(
         spotActions.createSpot({
+          ownerId: userId,
           name,
           description,
           price,
-          mainImage,
-          imageTwo,
-          imageThree,
-          imageFour,
-          imageFive,
           address,
           city,
           state,
           zipcode,
           country,
-          latitude,
-          longitude
-        })
+          lat,
+          lng
+        }, [mainImage, imageTwo, imageThree,imageFour,imageFive])
       )
 
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data?.errors) {
-            setErrors(data.errors);
-          }
-        });
+
+      if (createASpot) {
+
+        console.log(createASpot)
+        navigate(`/spots/${createASpot.id}`)
+      }
+
     }
-    return setErrors({
-      confirmPassword: "Confirm Password field must be the same as the Password field"
-    });
+
+
   };
-
-
-
-
-
-  const isDisabled =
-  !name ||
-  !country ||
-  !address ||
-  !city ||
-  !state ||
-  !zipcode ||
-  !description ||
-  !price ||
-  !mainImage;
-
-
-
 
 
 
@@ -205,8 +190,8 @@ function SpotForm() {
             className='latitude'
             placeholder='Latitude'
             type="decimal"
-            value={latitude}
-            onChange={(e) => setLatitude(e.target.value)}
+            value={lat}
+            onChange={(e) => setLat(e.target.value)}
             // required
           />
         </label>
@@ -221,8 +206,8 @@ function SpotForm() {
             className='longitude'
             placeholder='Longitude'
             type="decimal"
-            value={longitude}
-            onChange={(e) => setLongitude(e.target.value)}
+            value={lng}
+            onChange={(e) => setLng(e.target.value)}
             // required
           />
         </label>
@@ -249,7 +234,7 @@ function SpotForm() {
 
         <textarea
           className='inputs'
-          placeholder='Description'
+          placeholder='Please write at least 30 characters'
           type="textarea"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -420,7 +405,7 @@ Submit a link to at least one photo to publish your spot.
         type="submit"
         className='create-spot-button'
         // onClick="this.form.reset();"
-        disabled={isDisabled}
+        // disabled={isDisabled}
         >
           Create Spot
           </button>

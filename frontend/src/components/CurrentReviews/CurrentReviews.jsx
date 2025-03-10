@@ -139,7 +139,7 @@ for (let i = 0; i < reviews.length; i++) {
                 <OpenModalMenuItem
               itemText="Delete"
 
-              modalComponent={<ReviewDeleteModal />}
+              modalComponent={<ReviewDeleteModal reviewId={review.id} />}
               className="delete-button"
             />
 

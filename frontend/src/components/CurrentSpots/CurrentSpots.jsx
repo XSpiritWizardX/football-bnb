@@ -145,7 +145,7 @@ const CurrentSpots = () => {
                     <OpenModalMenuItem
               itemText="Delete"
 
-              modalComponent={<SpotDeleteModal />}
+              modalComponent={<SpotDeleteModal spotId={spot.id}/>}
               className="delete-button"
             />
 

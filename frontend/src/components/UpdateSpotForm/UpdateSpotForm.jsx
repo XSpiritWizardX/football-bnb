@@ -44,7 +44,7 @@ function UpdateSpotForm() {
     if (errors.length === 0) {
       setErrors({});
       return dispatch(
-        spotActions.createSpot({
+        spotActions.updateSpot({
           name,
           description,
           price,

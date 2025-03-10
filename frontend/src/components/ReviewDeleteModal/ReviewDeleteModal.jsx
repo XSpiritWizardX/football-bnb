@@ -6,31 +6,34 @@
 */
 // frontend/src/components/LoginFormModal/LoginFormModal.jsx
 
-import { useState } from 'react';
-import * as sessionActions from '../../store/session';
+
+import { deleteReview } from "../../store/reviews";
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import './ReviewDeleteModal.css';
 
-function ReviewFormModal() {
+function ReviewFormModal({reviewId}) {
   const dispatch = useDispatch();
   // const [credential, setCredential] = useState("");
   // const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+
   const { closeModal } = useModal();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors({});
-    // return dispatch(sessionActions.login({ credential, password }))
-    return dispatch(sessionActions)
-      .then(closeModal)
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
+  const handleSubmit = async () => {
+    console.log("Review ID before deleting:", reviewId); 
+
+    if (!reviewId) {
+      alert("Error: No Review ID provided!");
+      return;
+    }
+
+    try {
+      await dispatch(deleteReview(reviewId));
+      alert("Review deleted successfully!");
+      closeModal();
+    } catch (error) {
+      alert(`Failed to delete review: ${error.message}`);
+    }
   };
 
 
@@ -47,9 +50,7 @@ function ReviewFormModal() {
       </p>
       <form onSubmit={handleSubmit}>
 
-        {errors.credential && (
-          <p>{errors.credential}</p>
-        )}
+
 
 
         <button type="submit"

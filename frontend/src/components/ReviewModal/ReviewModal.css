@@ -1,0 +1,99 @@
+.review-stars-unfilled {
+    display: flex;
+    justify-content: space-evenly;
+    ;
+}
+
+
+.review-stars-filled {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+
+.unfilled-star1 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.unfilled-star2 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.unfilled-star3 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.unfilled-star4 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.unfilled-star5 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+
+
+
+
+
+.filled-star1 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.filled-star2 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.filled-star3 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.filled-star4 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
+
+.filled-star5 {
+height: 50px;
+width: 50px;
+cursor: pointer;
+
+
+}
