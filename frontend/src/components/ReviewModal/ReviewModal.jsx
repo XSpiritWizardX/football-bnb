@@ -37,7 +37,7 @@ function ReviewFormModal() {
       <form onSubmit={handleSubmit}>
         <label id='review'>
 
-          <input className='input'
+          <input className='review-input'
             placeholder='Just a quick review.'
             type="textarea"
 
@@ -61,7 +61,7 @@ function ReviewFormModal() {
             based on indexed star.
 
 
-            MAYBE I NEED TO MAP THROUGH THEM???? 
+            MAYBE I NEED TO MAP THROUGH THEM????
 
           */}
 

@@ -20,20 +20,17 @@ function ReviewFormModal({reviewId}) {
   const { closeModal } = useModal();
 
   const handleSubmit = async () => {
-    console.log("Review ID before deleting:", reviewId); 
 
     if (!reviewId) {
-      alert("Error: No Review ID provided!");
+
       return;
     }
 
-    try {
+
       await dispatch(deleteReview(reviewId));
-      alert("Review deleted successfully!");
+
       closeModal();
-    } catch (error) {
-      alert(`Failed to delete review: ${error.message}`);
-    }
+
   };
 
 

@@ -80,10 +80,14 @@ const SpotShow = () => {
     dispatch(fetchReviews(spotId));
   }, [dispatch, spotId]);
 
-
-
-
-
+//   const userHasReviewed = reviews.some(
+//     (review) => review.userId === user.id && review.spotId === spot.id
+//   );
+//   const isOwner = user.id === spot.ownerId;
+// // const currentUser =
+// if (userHasReviewed || isOwner) {
+//   return null; // Hide button
+// }
   // always add a question mark data loading
 
 // console.log(reviewElements)
@@ -357,7 +361,7 @@ const SpotShow = () => {
               </button> */}
                 <OpenModalMenuItem
               itemText="Post Your Review"
-
+                // {!currentUser ? }
               modalComponent={<ReviewModal />}
               className="review-button"
             />

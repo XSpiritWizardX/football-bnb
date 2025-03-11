@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spots';
 import './UpdateSpotForm.css';
-
+import { useNavigate } from 'react-router-dom';
 import { fetchOneSpot } from '../../store/spots';
 
 
@@ -12,83 +12,81 @@ import { fetchOneSpot } from '../../store/spots';
 function UpdateSpotForm() {
 
 
-
+  const spot = useSelector((state) => state.spots.spot || []);
+  const userId = useSelector(state => state.session.user.id)
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [country, setCountry] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zipcode, setZipcode] = useState();
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [description, setDescription] = useState("")
-  const [name, setName] = useState("")
-  const [price, setPrice] = useState("")
-  const [mainImage, setMainImage] = useState("")
+  const [country, setCountry] = useState(spot.country);
+  const [address, setAddress] = useState(spot.address);
+  const [city, setCity] = useState(spot.city);
+  const [state, setState] = useState(spot.state);
+  const [zipcode, setZipcode] = useState(spot.zipcode);
+  const [lat, setLat] = useState(spot.lat);
+  const [lng, setLng] = useState(spot.lng);
+  const [description, setDescription] = useState(spot.description)
+  const [name, setName] = useState(spot.name)
+  const [price, setPrice] = useState(spot.price)
+  const [mainImage, setMainImage] = useState(
+    spot?.SpotImages?.[0]?.url || ""
+  );
   const [imageTwo, setImageTwo] = useState("")
   const [imageThree, setImageThree] = useState("")
-  const [imageFour, setImageFour] = useState("")
+  const [imageFour, setImageFour] = useState( "")
   const [imageFive, setImageFive] = useState("")
 
   const [errors, setErrors] = useState({});
 
 
-  const spot = useSelector((state) => state.spots.spot || []);
   const { spotId } = useParams()
 
 
 
+//PUT /api/spots/undefined 500 9.301 ms - 53
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (errors.length === 0) {
+    if (Object.values(errors).length === 0) {
       setErrors({});
-      return dispatch(
-        spotActions.updateSpot({
-          name,
-          description,
-          price,
-          mainImage,
-          imageTwo,
-          imageThree,
-          imageFour,
-          imageFive,
-          address,
-          city,
-          state,
-          zipcode,
-          country,
-          latitude,
-          longitude
-        })
-      )
 
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data?.errors) {
-            setErrors(data.errors);
-          }
-        });
+      try {
+        const updateASpot = await dispatch(
+          spotActions.updateSpot({
+            ownerId: userId,
+            name,
+            description,
+            price,
+            address,
+            city,
+            state,
+            zipcode,
+            country,
+            lat,
+            lng
+          }, [mainImage, imageTwo, imageThree, imageFour, imageFive])
+        );
+
+        if (updateASpot && updateASpot.id) {
+          console.log(updateASpot);
+          navigate(`/spots/${updateASpot.id}`);
+        }
+      } catch (error) {
+        console.error("Error updating spot:", error);
+        setErrors({ general: "Failed to update spot. Please try again." });
+      }
     }
-    return setErrors({
-      confirmPassword: "Confirm Password field must be the same as the Password field"
-    });
   };
 
 
-
-
-
-  const isDisabled =
-  !name ||
-  !country ||
-  !address ||
-  !city ||
-  !state ||
-  !zipcode ||
-  !description ||
-  !price ||
-  !mainImage;
+  // const isDisabled =
+  // !name ||
+  // !country ||
+  // !address ||
+  // !city ||
+  // !state ||
+  // !zipcode ||
+  // !description ||
+  // !price ||
+  // !mainImage;
 
 
 
@@ -216,10 +214,10 @@ function UpdateSpotForm() {
 
           <input
             className='latitude'
-            placeholder={spot.latitude || "latitude"}
+            placeholder={spot.lat || "latitude"}
             type="decimal"
-            value={latitude}
-            onChange={(e) => setLatitude(e.target.value)}
+            value={spot.lat}
+            onChange={(e) => setLat(e.target.value)}
             // required
           />
         </label>
@@ -232,10 +230,10 @@ function UpdateSpotForm() {
 
           <input
             className='longitde'
-            placeholder={spot.longitude || "longitude"}
+            placeholder={spot.lng || "longitude"}
             type="decimal"
-            value={longitude}
-            onChange={(e) => setLongitude(e.target.value)}
+            value={spot.lng}
+            onChange={(e) => setLng(e.target.value)}
             // required
           />
         </label>
@@ -452,7 +450,7 @@ Submit a link to at least one photo to publish your spot.
         type="submit"
         className='create-spot-button'
         // onClick="this.form.reset();"
-        disabled={isDisabled}
+        // disabled={isDisabled}
         >
           Update Spot
           </button>
