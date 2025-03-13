@@ -1,5 +1,6 @@
 // // promise.all
 import { csrfFetch } from "./csrf";
+
 const SET_REVIEWS = '/api/spots/:spotId/reviews';
 
 const REMOVE_REVIEW = "/api/reviews/remove";
@@ -47,27 +48,29 @@ const REMOVE_REVIEW = "/api/reviews/remove";
 
 
 
-  export const createReview = () => async (dispatch) => {
-    const response = await csrfFetch('/api/reviews',{
-      method:"POST",
-      Headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
+  // export const createReview = () => async (dispatch) => {
+
+  //   const response = await csrfFetch(`/api/spots/${spotId}/reviews`,{
+  //     method:"POST",
+  //     Headers:{"Content-Type":"application/json"},
+  //     body:JSON.stringify({
 
 
-        
-        // not sure about the body
-        // review: review,
-        // stars: stars,
 
-      })
-    }
-    );
-    if (response.ok) {
-      const reviews = await response.json();
-      dispatch(setReviews(reviews));
+  //       userId: user.id,
+  //       spotId,
+  //       review,
+  //       stars
 
-    }
-  };
+  //     })
+  //   }
+  //   );
+  //   if (response.ok) {
+  //     const reviews = await response.json();
+  //     dispatch(setReviews(reviews));
+
+  //   }
+  // };
 
 
 // post a review in review modal

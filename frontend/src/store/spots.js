@@ -180,7 +180,7 @@ if(image){
 
 
 
-// PUT /api/spots/undefined 500 9.301 ms - 53
+
 
 export const updateSpot = (spot, images) => async (dispatch) => {
   const { id, name, description, price, address, city, state, zipcode, country, lat, lng } = spot;
@@ -215,7 +215,7 @@ export const updateSpot = (spot, images) => async (dispatch) => {
       for await (let image of images) {
         if (image) {
           await csrfFetch(`/api/spots/${data.id}/images`, {
-            method: "POST",
+            method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               spotId: data.id,

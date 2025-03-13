@@ -1,6 +1,6 @@
 .review-stars-unfilled {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     ;
 }
 
@@ -86,4 +86,25 @@ height: 50px;
 width: 50px;
 cursor: pointer;
 
+}
+
+
+.review-input {
+    height: 200px;
+    width: 450px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin-bottom: 30px;
+    border: 3px solid black;
+}
+
+
+.review-modal-container {
+    width: 500px;
+}
+
+
+.submit-review-button {
+    box-shadow: 4px 4px grey;
 }

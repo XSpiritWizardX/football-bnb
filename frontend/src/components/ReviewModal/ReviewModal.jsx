@@ -1,49 +1,84 @@
 // frontend/src/components/LoginFormModal/LoginFormModal.jsx
 import { RiStarSLine } from "react-icons/ri";
-import { RiStarSFill } from "react-icons/ri";
+// import { RiStarSFill } from "react-icons/ri";
 import { useState } from 'react';
-import * as sessionActions from '../../store/session';
+import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import './ReviewModal.css';
+import * as reviewActions from '../../store/reviews'
+
+import { useParams } from "react-router-dom";
+
+
+
+
 
 function ReviewFormModal() {
   const dispatch = useDispatch();
-  // const [credential, setCredential] = useState("");
-  // const [password, setPassword] = useState("");
+  const userId = useSelector(state => state.session.user.id)
+  const spotId = useParams()
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const [review, setReview] = useState("");
+  const [stars, setStars] = useState();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors({});
 
-    return dispatch(sessionActions)
-      .then(closeModal)
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
-  };
+
+
+  const handleSubmit = async (e) => {
+     e.preventDefault();
+
+     if (Object.values(errors).length === 0) {
+       setErrors({});
+
+      const createAReview = await dispatch(
+         reviewActions.createReview({
+           userId: userId,
+            spotId: spotId,
+            review,
+            stars
+         })
+       )
+
+
+       if (createAReview) {
+
+         console.log(createAReview)
+
+       }
+       closeModal()
+     }
+
+
+   };
 
 
 
   return (
 
-    <div className='review-modal-container'>
+    <div
+     className='review-modal-container'
+     >
       <h1>How was your stay?</h1>
-      <form onSubmit={handleSubmit}>
-        <label id='review'>
 
-          <input className='review-input'
-            placeholder='Just a quick review.'
+      <form onSubmit={handleSubmit}>
+
+
+        <label>
+
+          <textarea
+            className='review-input'
+            placeholder='Leave you review here...'
             type="textarea"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
 
             required
           />
+
         </label>
+
 
 
         {errors.credential && (
@@ -72,24 +107,34 @@ function ReviewFormModal() {
 
             <RiStarSLine
             className="unfilled-star1"
+            onChange={(e) => setStars(e.target.value)}
+            value={1}
             />
             <RiStarSLine
             className="unfilled-star2"
+            onChange={(e) => setStars(e.target.value)}
+            value={2}
             />
             <RiStarSLine
             className="unfilled-star3"
+            onChange={(e) => setStars(e.target.value)}
+            value={3}
             />
             <RiStarSLine
             className="unfilled-star4"
+            onChange={(e) => setStars(e.target.value)}
+            value={4}
             />
             <RiStarSLine
             className="unfilled-star5"
+            onChange={(e) => setStars(e.target.value)}
+            value={5}
             />
-
+              <h3>Stars</h3>
             </div>
 
 
-            <div
+            {/* <div
             className="review-stars-filled"
             >
 
@@ -110,7 +155,7 @@ function ReviewFormModal() {
             />
 
 
-            </div>
+            </div> */}
 
 
 
@@ -118,7 +163,9 @@ function ReviewFormModal() {
 
 
 
-        <button type="submit"
+        <button
+        type="submit"
+        className="submit-review-button"
           onClick={handleSubmit}
         >
           Submit Your Review
