@@ -458,6 +458,7 @@ router.put('/:id',requireAuth, async (req, res) => {
     if(!req.body.country){
       res.status(400).json({message: "Country is required " })
     }
+    // commented out to pass front end stuff
     // if(!req.body.lat){
     //   res.status(400).json({message: "latitude is required " })
     // }
