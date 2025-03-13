@@ -174,12 +174,19 @@ if(image){
 
 
 
+
+
+
+
+
+
 // PUT /api/spots/undefined 500 9.301 ms - 53
+
 export const updateSpot = (spot, images) => async (dispatch) => {
   const { id, name, description, price, address, city, state, zipcode, country, lat, lng } = spot;
 
   try {
-    // Step 1: Update the spot details
+
     const response = await csrfFetch(`/api/spots/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -201,10 +208,10 @@ export const updateSpot = (spot, images) => async (dispatch) => {
       throw new Error("Failed to update spot");
     }
 
-    const data = await response.json(); // Ensure data is set AFTER the response
+    const data = await response.json();
 
     if (data) {
-      // Step 2: Handle images (like createSpot)
+
       for await (let image of images) {
         if (image) {
           await csrfFetch(`/api/spots/${data.id}/images`, {
@@ -213,14 +220,14 @@ export const updateSpot = (spot, images) => async (dispatch) => {
             body: JSON.stringify({
               spotId: data.id,
               url: image,
-              preview: image === images[0] // First image is preview
+              preview: image === images[0]
             })
           });
         }
       }
     }
 
-    // Step 3: Fetch the updated spot and return it
+
     await dispatch(fetchOneSpot(data.id));
     return data;
 
@@ -232,66 +239,6 @@ export const updateSpot = (spot, images) => async (dispatch) => {
 
 
 
-
-
-// export const updateSpot = (spot, images) => async (dispatch) => {
-//   const { name, description, price, address, city, state, zipcode, country, lat, lng } = spot;
-
-//   // Step 1: Update Spot Details
-//   const response = await csrfFetch(`/api/spots/${data.id}`, {
-//     method: "PUT",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       name,
-//       description,
-//       price,
-//       address,
-//       city,
-//       state,
-//       zipcode,
-//       country,
-//       lat,
-//       lng
-//     })
-//   });
-
-//   if (!response.ok) {
-//     throw new Error("Failed to update spot");
-//   }
-
-//   const data = await response.json();
-
-//   // Step 2: Update Spot Images (if images are provided)
-//   if (images && images.length > 0) {
-//     const imageRequests = images.map((image, index) => {
-//       if (!image) return null; // Skip empty images
-
-//       return csrfFetch(`/api/spots/${data.id}/images`, {
-//         method: "POST", // Use POST to add new images instead of PUT
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           spotId: data.id,
-//           url: image,
-//           preview: index === 0, // First image is preview
-//         })
-//       });
-//     });
-
-//     // Run all image requests concurrently
-//     await Promise.all(imageRequests.filter(req => req));
-//   }
-
-//   // Step 3: Fetch Updated Spot Data
-//   const updatedSpotResponse = await csrfFetch(`/api/spots/${data.id}`);
-//   if (!updatedSpotResponse.ok) {
-//     throw new Error("Failed to fetch updated spot data");
-//   }
-
-//   const updatedSpot = await updatedSpotResponse.json();
-//   dispatch(setOneSpot(updatedSpot));
-
-//   return updatedSpot;
-// };
 
 
 

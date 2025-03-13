@@ -14,11 +14,10 @@ import CurrentSpots from './components/CurrentSpots/CurrentSpots';
 import CurrentReviews from './components/CurrentReviews/CurrentReviews';
 import UpdateSpotForm from './components/UpdateSpotForm/UpdateSpotForm';
 
-// import ReviewModal from './components/ReviewModal/ReviewModal'
-// import ReviewDeleteForm from './components/ReviewDeleteForm/ReviewDeleteForm'
 
 
-// import BookingForm from './components/BookingForm/BookingForm'
+
+
 
 
 

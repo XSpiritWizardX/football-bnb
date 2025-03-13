@@ -51,10 +51,10 @@ function UpdateSpotForm() {
     e.preventDefault();
     if (Object.values(errors).length === 0) {
       setErrors({});
-
       try {
         const updateASpot = await dispatch(
           spotActions.updateSpot({
+            id: spot.id,
             ownerId: userId,
             name,
             description,
@@ -68,6 +68,7 @@ function UpdateSpotForm() {
             lng
           }, [mainImage, imageTwo, imageThree, imageFour, imageFive])
         );
+        console.log(spotId)
 
         if (updateASpot && updateASpot.id) {
           console.log(updateASpot);
