@@ -1,13 +1,11 @@
-// frontend/src/components/LoginFormModal/LoginFormModal.jsx
-import { RiStarSLine } from "react-icons/ri";
-// import { RiStarSFill } from "react-icons/ri";
+
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import './ReviewModal.css';
 import * as reviewActions from '../../store/reviews'
-
+import StarsRatingInput from '../StarsRatingInput/StarsRatingInput';
 import { useParams } from "react-router-dom";
 
 
@@ -21,14 +19,15 @@ function ReviewFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   const [review, setReview] = useState("");
-  const [stars, setStars] = useState();
+  const [stars, setStars] = useState(review.stars);
+  // const [rating, setRating] = useState(review.rating);
 
 
 
 
   const handleSubmit = async (e) => {
      e.preventDefault();
-
+     await dispatch({ ...review, stars });
      if (Object.values(errors).length === 0) {
        setErrors({});
 
@@ -54,7 +53,9 @@ function ReviewFormModal() {
    };
 
 
-
+   const handleRatingChange = (newRating) => {
+    setStars(newRating); // Update rating state
+  };
   return (
 
     <div
@@ -101,61 +102,11 @@ function ReviewFormModal() {
           */}
 
 
-            <div
-            className="review-stars-unfilled"
-            >
-
-            <RiStarSLine
-            className="unfilled-star1"
-            onChange={(e) => setStars(e.target.value)}
-            value={1}
-            />
-            <RiStarSLine
-            className="unfilled-star2"
-            onChange={(e) => setStars(e.target.value)}
-            value={2}
-            />
-            <RiStarSLine
-            className="unfilled-star3"
-            onChange={(e) => setStars(e.target.value)}
-            value={3}
-            />
-            <RiStarSLine
-            className="unfilled-star4"
-            onChange={(e) => setStars(e.target.value)}
-            value={4}
-            />
-            <RiStarSLine
-            className="unfilled-star5"
-            onChange={(e) => setStars(e.target.value)}
-            value={5}
-            />
-              <h3>Stars</h3>
-            </div>
-
-
-            {/* <div
-            className="review-stars-filled"
-            >
-
-            <RiStarSFill
-            className="filled-star1"
-            />
-            <RiStarSFill
-            className="filled-star2"
-            />
-            <RiStarSFill
-            className="filled-star3"
-            />
-            <RiStarSFill
-            className="filled-star4"
-            />
-            <RiStarSFill
-            className="filled-star5"
-            />
-
-
-            </div> */}
+<StarsRatingInput
+        disabled={false}
+        onChange={handleRatingChange}
+        rating={stars}
+      />
 
 
 

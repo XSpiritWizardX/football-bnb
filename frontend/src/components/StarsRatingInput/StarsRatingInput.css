@@ -1,0 +1,35 @@
+
+.stars-box-thing {
+    display: flex;
+    justify-content: flex-end;
+    align-items: start;
+}
+
+
+
+.rating-input {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+ .filled {
+    color: rgb(233, 219, 30);
+    height: 70px;
+    width: 70px;
+    cursor: pointer;
+  }
+
+ .empty {
+    color: rgb(46, 45, 44);
+    height: 70px;
+    width: 70px;
+    cursor: pointer;
+  }
+
+  h3 {
+    display: flex;
+
+
+  }
