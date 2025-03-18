@@ -48,29 +48,30 @@ const REMOVE_REVIEW = "/api/reviews/remove";
 
 
 
-  // export const createReview = () => async (dispatch) => {
+  export const createReview = (arg) => async (dispatch) => {
+    const {userId, spotId, review, stars} = arg
+    console.log(userId)
+    console.log(spotId)
+    console.log(review)
+    console.log(stars)
+    const response = await csrfFetch(`/api/spots/${spotId}/reviews`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        userId,
+        spotId,
+        review,
+        stars:stars
+      })
+    }
+    );
 
-  //   const response = await csrfFetch(`/api/spots/${spotId}/reviews`,{
-  //     method:"POST",
-  //     Headers:{"Content-Type":"application/json"},
-  //     body:JSON.stringify({
+    if (response.ok) {
+      // const review = await response.json();
+      dispatch(fetchReviews(spotId));
 
-
-
-  //       userId: user.id,
-  //       spotId,
-  //       review,
-  //       stars
-
-  //     })
-  //   }
-  //   );
-  //   if (response.ok) {
-  //     const reviews = await response.json();
-  //     dispatch(setReviews(reviews));
-
-  //   }
-  // };
+    }
+  };
 
 
 // post a review in review modal
@@ -120,8 +121,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 
       case SET_REVIEWS:
         return { ...state, reviews: action.reviews };
-      // case SET_ONE_SPOT:
-      //   return {...state, spot: action.spot};
+
       case REMOVE_REVIEW: {
         const newState = { ...state };
         delete newState[action.reviewId]; // Remove review

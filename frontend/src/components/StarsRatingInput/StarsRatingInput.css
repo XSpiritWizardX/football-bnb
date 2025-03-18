@@ -10,26 +10,34 @@
 .rating-input {
     display: flex;
     justify-content: center;
+    font-size: xx-large;
+    align-items: baseline;
+    margin: auto;
+    /* margin-left: 10%; */
 }
 
 
 
  .filled {
     color: rgb(233, 219, 30);
+    /* font-size: xx-large; */
     height: 70px;
     width: 70px;
     cursor: pointer;
+    /* margin-top: 4%; */
   }
 
  .empty {
     color: rgb(46, 45, 44);
+    /* font-size: xx-large; */
     height: 70px;
     width: 70px;
     cursor: pointer;
+    /* margin-top: 4%; */
   }
 
   h3 {
-    display: flex;
-
-
+   margin-top:2%;
+   /* margin-right: 10%; */
+   font-size: xx-large;
   }

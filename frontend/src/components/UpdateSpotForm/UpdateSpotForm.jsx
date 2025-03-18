@@ -41,12 +41,6 @@ function UpdateSpotForm() {
 
 
 
-//PUT /api/spots/undefined 500 9.301 ms - 53
-//PUT /api/spots/undefined 500 9.301 ms - 53
-//PUT /api/spots/undefined 500 9.301 ms - 53
-//PUT /api/spots/undefined 500 9.301 ms - 53
-//PUT /api/spots/undefined 500 9.301 ms - 53
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.values(errors).length === 0) {
@@ -68,10 +62,10 @@ function UpdateSpotForm() {
             lng
           }, [mainImage, imageTwo, imageThree, imageFour, imageFive])
         );
-        console.log(spotId)
+        // console.log(spotId)
 
         if (updateASpot && updateASpot.id) {
-          console.log(updateASpot);
+          // console.log(updateASpot);
           navigate(`/spots/${updateASpot.id}`);
         }
       } catch (error) {

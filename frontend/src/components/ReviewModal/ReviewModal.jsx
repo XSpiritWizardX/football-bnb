@@ -6,7 +6,7 @@ import { useModal } from '../../context/Modal';
 import './ReviewModal.css';
 import * as reviewActions from '../../store/reviews'
 import StarsRatingInput from '../StarsRatingInput/StarsRatingInput';
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 
 
@@ -15,36 +15,55 @@ import { useParams } from "react-router-dom";
 function ReviewFormModal() {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
-  const spotId = useParams()
+  const review = useSelector(state => state.reviews.reviews.Reviews)
+  const spot = useSelector(state => state.spots.spot)
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
-  const [review, setReview] = useState("");
+  const [reviewText, setReviewText] = useState("");
   const [stars, setStars] = useState(review.stars);
-  // const [rating, setRating] = useState(review.rating);
+
+
+  // const { spotId } = useParams();
+
+  const spotId = spot.id
+
+const handleTextChange = (e) => {
+  const { value} = e.target
+  setReviewText(value)
+}
+
+
+
+
+
+
 
 
 
 
   const handleSubmit = async (e) => {
      e.preventDefault();
-     await dispatch({ ...review, stars });
+
      if (Object.values(errors).length === 0) {
        setErrors({});
 
-      const createAReview = await dispatch(
+       const createAReview =  dispatch(
          reviewActions.createReview({
-           userId: userId,
-            spotId: spotId,
-            review,
+           userId,
+            spotId,
+            review: reviewText,
             stars
-         })
-       )
+          })
+        )
 
 
-       if (createAReview) {
+        if (createAReview) {
 
-         console.log(createAReview)
-
+          console.log(createAReview)
+          // console.log(stars)
+          // console.log(spotId)
+          // console.log(review)
+          // console.log(userId)
        }
        closeModal()
      }
@@ -56,6 +75,10 @@ function ReviewFormModal() {
    const handleRatingChange = (newRating) => {
     setStars(newRating); // Update rating state
   };
+
+
+
+
   return (
 
     <div
@@ -69,12 +92,12 @@ function ReviewFormModal() {
         <label>
 
           <textarea
+            id='textarea'
             className='review-input'
-            placeholder='Leave you review here...'
+            placeholder='Leave your review here...'
             type="textarea"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-
+            value={reviewText}
+            onChange={handleTextChange}
             required
           />
 
@@ -89,23 +112,13 @@ function ReviewFormModal() {
 
 
 
-          {/*
 
-          there will be 5 blank stars and 5 filled stars.
-            starting with blank stars, if empty star is clicked, that star and
-            the previous indexed stars will turn to filled stars and the data will be saved
-            based on indexed star.
-
-
-            MAYBE I NEED TO MAP THROUGH THEM????
-
-          */}
 
 
 <StarsRatingInput
         disabled={false}
         onChange={handleRatingChange}
-        rating={stars}
+        stars={stars}
       />
 
 
