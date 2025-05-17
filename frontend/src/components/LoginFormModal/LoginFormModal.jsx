@@ -24,16 +24,7 @@ const isDisabled = !credential ||
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
-    // if(!credential ||
-    //    ! password ||
-    //     credential.length < 4 ||
-    //      password.length < 6){
-    //   // setErrors({message:"The provided credentials were invalid"})
-    //       setDisabled(true)
-    //     }
-    //     else {
-    //       setDisabled(false)
-    //     }
+
     return dispatch(sessionActions.login({ credential, password }))
       .then(closeModal)
       .catch(async (res) => {

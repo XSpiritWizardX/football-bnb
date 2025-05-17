@@ -76,16 +76,6 @@ function UpdateSpotForm() {
   };
 
 
-  // const isDisabled =
-  // !name ||
-  // !country ||
-  // !address ||
-  // !city ||
-  // !state ||
-  // !zipcode ||
-  // !description ||
-  // !price ||
-  // !mainImage;
 
 
 

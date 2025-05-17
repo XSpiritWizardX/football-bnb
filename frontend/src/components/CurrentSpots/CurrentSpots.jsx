@@ -21,16 +21,7 @@ const CurrentSpots = () => {
     dispatch(fetchCurrentSpots());
   }, [dispatch]);
 
-// gotta add handle submmit buttons bring up the delete confirmation modal
 
-
-//   if(!spots) {
-//     return <a
-
-//             >
-//                 Create A Spot
-//             </a>
-//   }
 
 
 
